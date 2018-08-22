@@ -3,6 +3,7 @@
 // Copyright (c) 2018 Copyisright. All rights reserved.
 //
 
+import Foundation
 import UIKit
 
 class RootCoordinator: Coordinator {
@@ -13,10 +14,13 @@ class RootCoordinator: Coordinator {
 	init(window: UIWindow) {
 		self.window = window
 
-		let viewModel = RootViewModel()
+		let viewModel = ReadingListViewModel()
 
-		let rootViewController = RootViewController(viewModel: viewModel)
+		let rootViewController = ReadingListViewController(viewModel: viewModel)
+
 		let navigationController = UINavigationController(rootViewController: rootViewController)
+		navigationController.navigationBar.titleTextAttributes = [.font: UIFont(name: "Palatino", size: 18)!]
+		navigationController.navigationBar.barStyle = .black
 
 		self.navigationController = navigationController
 	}
