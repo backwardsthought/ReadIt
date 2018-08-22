@@ -54,3 +54,5 @@ AppConfigs.plist
 
 /vendor
 .bundle/
+
+Build/*
