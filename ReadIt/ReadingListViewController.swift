@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 fileprivate extension String {
 
@@ -18,8 +19,12 @@ fileprivate extension String {
 
 class ReadingListViewController: UIViewController {
 
+	private let disposeBag = DisposeBag()
+
 	let viewModel: ReadingListViewModelType
 	let tableView: UITableView
+
+	var readingsList: [Reading] = []
 
 	init(viewModel: ReadingListViewModelType) {
 		self.viewModel = viewModel
@@ -46,6 +51,13 @@ class ReadingListViewController: UIViewController {
 
 		view.addSubview(tableView)
 		view.addConstraintsForAllEdges(of: tableView)
+
+		viewModel.readingList
+				.subscribe(onNext: { readingsList in
+					self.readingsList = readingsList
+					self.tableView.reloadData()
+				})
+				.disposed(by: disposeBag)
 	}
 
 }
@@ -53,13 +65,13 @@ class ReadingListViewController: UIViewController {
 extension ReadingListViewController: UITableViewDataSource, UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return viewModel.readingList.count
+		return readingsList.count
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: .genericIdentifier, for: indexPath)
 
-		let reading = viewModel.readingList[indexPath.row]
+		let reading = readingsList[indexPath.row]
 
 		cell.textLabel?.text = reading.title
 		cell.detailTextLabel?.text = reading.source
