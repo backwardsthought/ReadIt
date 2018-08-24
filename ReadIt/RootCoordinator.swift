@@ -19,11 +19,13 @@ class RootCoordinator: Coordinator {
 		let appState = AppState()
 		self.appState = appState
 
-		let model = ReadingListModel()
+		let client = Client()
 
-		let viewModel = ReadingListViewModel()
+		let repository = ReadingListRepository(client: client)
 
-		model.loadReadingList(to: viewModel)
+		let model = ReadingListUseCase(repository: repository)
+
+		let viewModel = ReadingListViewModel(model: model)
 
 		let rootViewController = ReadingListViewController(viewModel: viewModel)
 

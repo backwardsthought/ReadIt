@@ -58,6 +58,8 @@ class ReadingListViewController: UIViewController {
 					self.tableView.reloadData()
 				})
 				.disposed(by: disposeBag)
+
+		viewModel.load()
 	}
 
 }

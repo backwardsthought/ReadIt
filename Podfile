@@ -7,7 +7,9 @@ target 'ReadIt' do
 
   # Pods for ReadIt
   pod 'Moya'
+  pod 'Moya/RxSwift'
   pod 'RxSwift'
+  pod 'RxCocoa'
 
   target 'ReadItTests' do
     inherit! :search_paths

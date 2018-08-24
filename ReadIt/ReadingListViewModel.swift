@@ -4,19 +4,33 @@
 //
 
 import RxSwift
+import RxCocoa
 
 protocol ReadingListViewModelType: class {
 
-	var readingList: BehaviorSubject<[Reading]> { get }
+	var readingList: BehaviorRelay<[Reading]> { get }
+
+	func load()
 
 }
 
 class ReadingListViewModel: ReadingListViewModelType {
 
-	private(set) var readingList: BehaviorSubject<[Reading]>
+	private let disposeBag = DisposeBag()
 
-	init() {
-		readingList = BehaviorSubject(value: [])
+	let model: ReadingListModel
+	let readingList: BehaviorRelay<[Reading]>
+
+	init(model: ReadingListModel) {
+		self.model = model
+
+		readingList = BehaviorRelay(value: [])
+	}
+
+	func load() {
+		model.execute()
+				.subscribe(onSuccess: readingList.accept)
+				.disposed(by: disposeBag)
 	}
 
 }

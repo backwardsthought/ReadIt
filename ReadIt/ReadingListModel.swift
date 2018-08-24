@@ -4,44 +4,25 @@
 //
 
 import Moya
+import RxSwift
 
-protocol ReadingListModelType: class {
+protocol ReadingListModel: class {
 
-	func loadReadingList(to viewModel: ReadingListViewModel)
+	func execute() -> Single<[Reading]>
 
 }
 
-class ReadingListModel: ReadingListModelType {
+class ReadingListUseCase: ReadingListModel {
 
-	func loadReadingList(to viewModel: ReadingListViewModel) {
-		let provider = MoyaProvider<PocketService>()
+	let repository: ReadingListRepository
 
-		provider.request(.get) { result in
-			if case .success(let response) = result{
-				do {
-					let pocketList = try self.serializePocketResponse(response: response)
-					let readingsList = pocketList.map(Reading.init)
-
-					viewModel.readingList.on(.next(readingsList))
-				} catch {
-					print(error)
-				}
-			}
-		}
+	init(repository: ReadingListRepository) {
+		self.repository = repository
 	}
 
-	private func serializePocketResponse(response: Moya.Response) throws -> [Pocket] {
-		let json = try response.mapJSON()
-
-		guard let list = (json as? NSDictionary)?.value(forKeyPath: "list") as? [String: Any?] else {
-			return []
-		}
-
-		return try list.map { key, value -> Pocket in
-			let decoder = JSONDecoder()
-			let data = try JSONSerialization.data(withJSONObject: value, options: [])
-
-			return try decoder.decode(Pocket.self, from: data)
+	func execute() -> Single<[Reading]> {
+		return repository.fetch().map { pocketList in
+			return pocketList.map(Reading.init)
 		}
 	}
 
