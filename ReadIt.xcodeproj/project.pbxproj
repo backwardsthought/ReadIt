@@ -14,13 +14,17 @@
 		1E90E4680AB20FF207AD4A5C /* Pocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EF1034BEAF105E8DA0A4 /* Pocket.swift */; };
 		1E90E489953BEC3684377A1B /* PocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E4D3A972B62CDE9CD82B /* PocketService.swift */; };
 		1E90E4D87B607F5AF19745F2 /* ReadingListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E2119D0799A52A980644 /* ReadingListRepository.swift */; };
+		1E90E7F3C73885D571588F78 /* Pocket+Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EABD8FBB436105BDDE6E /* Pocket+Credentials.swift */; };
 		1E90EAA476FA6DD42F883880 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E8E77D897EEABD234BAB /* Model.swift */; };
 		1E90EAE20AB3C94F8517FE3A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E671C9CE910F231AF810 /* Coordinator.swift */; };
 		1E90EC4BC60946097FECF89D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EF2839851A9A3A18A467 /* AppState.swift */; };
 		1E90ED4673A756EEB9D7ECF3 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E1DAE9F10AA9D7B5C92B /* Reading.swift */; };
-		1E90EEDB5514BC1BB7953C2B /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E94B3D6E0C75B44A8110 /* Client.swift */; };
+		1E90EEDB5514BC1BB7953C2B /* PocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E94B3D6E0C75B44A8110 /* PocketClient.swift */; };
 		1E90EF482DE5323A00B867EB /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E4EF8F9283E07A71EC18 /* UIView+Constraints.swift */; };
 		1E90EF650E2F226859E9DDC8 /* ReadingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E02D93343B1DE08BFE04 /* ReadingListViewModel.swift */; };
+		2756AE1B215DD7F40075136E /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2756AE19215DD72D0075136E /* SafariServices.framework */; };
+		2756AE1D215DE9850075136E /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2756AE1C215DE9850075136E /* AuthenticationServices.framework */; };
+		2756AE1F215DE98F0075136E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2756AE1E215DE98F0075136E /* WebKit.framework */; };
 		2768D6A9212BAC9C000CACCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2768D6A8212BAC9C000CACCC /* AppDelegate.swift */; };
 		2768D6AB212BAC9C000CACCC /* ReadingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2768D6AA212BAC9C000CACCC /* ReadingListViewController.swift */; };
 		2768D6AE212BAC9C000CACCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2768D6AC212BAC9C000CACCC /* Main.storyboard */; };
@@ -52,11 +56,15 @@
 		1E90E671C9CE910F231AF810 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		1E90E6AD99F54E51D580AEA0 /* ReadingListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingListModel.swift; sourceTree = "<group>"; };
 		1E90E8E77D897EEABD234BAB /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		1E90E94B3D6E0C75B44A8110 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
+		1E90E94B3D6E0C75B44A8110 /* PocketClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PocketClient.swift; sourceTree = "<group>"; };
+		1E90EABD8FBB436105BDDE6E /* Pocket+Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pocket+Credentials.swift"; sourceTree = "<group>"; };
 		1E90EE4A06AF92D296C6A288 /* ReadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingCell.swift; sourceTree = "<group>"; };
 		1E90EF1034BEAF105E8DA0A4 /* Pocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pocket.swift; sourceTree = "<group>"; };
 		1E90EF2839851A9A3A18A467 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		1E90EFBB27CC31246EE8AC82 /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
+		2756AE19215DD72D0075136E /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		2756AE1C215DE9850075136E /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
+		2756AE1E215DE98F0075136E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		2768D6A5212BAC9C000CACCC /* ReadIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2768D6A8212BAC9C000CACCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2768D6AA212BAC9C000CACCC /* ReadingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListViewController.swift; sourceTree = "<group>"; };
@@ -79,6 +87,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2756AE1F215DE98F0075136E /* WebKit.framework in Frameworks */,
+				2756AE1D215DE9850075136E /* AuthenticationServices.framework in Frameworks */,
+				2756AE1B215DD7F40075136E /* SafariServices.framework in Frameworks */,
 				D5AC15A75E7F196F3EDC1A97 /* Pods_ReadIt.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -134,9 +145,10 @@
 				1E90E4D3A972B62CDE9CD82B /* PocketService.swift */,
 				1E90EF1034BEAF105E8DA0A4 /* Pocket.swift */,
 				1E90E6AD99F54E51D580AEA0 /* ReadingListModel.swift */,
-				1E90E94B3D6E0C75B44A8110 /* Client.swift */,
+				1E90E94B3D6E0C75B44A8110 /* PocketClient.swift */,
 				1E90E8E77D897EEABD234BAB /* Model.swift */,
 				1E90E2119D0799A52A980644 /* ReadingListRepository.swift */,
+				1E90EABD8FBB436105BDDE6E /* Pocket+Credentials.swift */,
 			);
 			path = ReadIt;
 			sourceTree = "<group>";
@@ -153,6 +165,9 @@
 		2D3DDF6ADE4C18C130762D71 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2756AE1E215DE98F0075136E /* WebKit.framework */,
+				2756AE1C215DE9850075136E /* AuthenticationServices.framework */,
+				2756AE19215DD72D0075136E /* SafariServices.framework */,
 				56A9A9143D52230A08A9CC32 /* Pods_ReadIt.framework */,
 				3D67064E17CBA0E69AA5C117 /* Pods_ReadItTests.framework */,
 			);
@@ -352,9 +367,10 @@
 				1E90E489953BEC3684377A1B /* PocketService.swift in Sources */,
 				1E90E4680AB20FF207AD4A5C /* Pocket.swift in Sources */,
 				1E90E42C4FD6010F29BA5403 /* ReadingListModel.swift in Sources */,
-				1E90EEDB5514BC1BB7953C2B /* Client.swift in Sources */,
+				1E90EEDB5514BC1BB7953C2B /* PocketClient.swift in Sources */,
 				1E90EAA476FA6DD42F883880 /* Model.swift in Sources */,
 				1E90E4D87B607F5AF19745F2 /* ReadingListRepository.swift in Sources */,
+				1E90E7F3C73885D571588F78 /* Pocket+Credentials.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,9 +532,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 47LVS8UB5Q;
 				INFOPLIST_FILE = ReadIt/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.backwardsthought.ReadIt;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lobo.ReadIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -531,9 +552,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 47LVS8UB5Q;
 				INFOPLIST_FILE = ReadIt/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.backwardsthought.ReadIt;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.lobo.ReadIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -548,7 +574,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ReadItTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.copyisright.ReadItTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -565,7 +595,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = ReadItTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.copyisright.ReadItTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

@@ -10,27 +10,47 @@ protocol ReadingListViewModelType: class {
 
 	var readingList: BehaviorRelay<[Reading]> { get }
 
+	var isLogged: BehaviorRelay<Bool> { get }
+
 	func load()
+
+	func login()
 
 }
 
 class ReadingListViewModel: ReadingListViewModelType {
 
-	private let disposeBag = DisposeBag()
+	private var executionDisposable: Disposable? = nil
+	private var loginDisposable: Disposable? = nil
 
 	let model: ReadingListModel
+
 	let readingList: BehaviorRelay<[Reading]>
+	let isLogged: BehaviorRelay<Bool>
+
+	deinit {
+		executionDisposable?.dispose()
+		loginDisposable?.dispose()
+	}
 
 	init(model: ReadingListModel) {
 		self.model = model
 
 		readingList = BehaviorRelay(value: [])
+		isLogged = BehaviorRelay(value: false)
 	}
 
 	func load() {
-		model.execute()
+		executionDisposable?.dispose()
+		executionDisposable = model.execute()
 				.subscribe(onSuccess: readingList.accept)
-				.disposed(by: disposeBag)
+	}
+
+	func login() {
+		loginDisposable?.dispose()
+		loginDisposable = model.login()
+				.do(onSuccess: { [weak self] _ in self?.load() })
+				.subscribe(onSuccess: isLogged.accept)
 	}
 
 }

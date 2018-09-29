@@ -5,21 +5,30 @@
 
 import Foundation
 import UIKit
+import RxSwift
+
+class RootNavigationController: UINavigationController {
+
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return self.topViewController?.preferredStatusBarStyle ?? .default
+	}
+
+}
 
 class RootCoordinator: Coordinator {
 
 	weak var window: UIWindow?
-	weak var navigationController: UINavigationController?
+	weak var navigationController: RootNavigationController?
 
 	let appState: AppState
 
 	init(window: UIWindow) {
 		self.window = window
 
-		let appState = AppState()
-		self.appState = appState
+		let client = PocketClient()
 
-		let client = Client()
+		let appState = AppState(pocketClient: client)
+		self.appState = appState
 
 		let repository = ReadingListRepository(client: client)
 
@@ -29,9 +38,14 @@ class RootCoordinator: Coordinator {
 
 		let rootViewController = ReadingListViewController(viewModel: viewModel)
 
-		let navigationController = UINavigationController(rootViewController: rootViewController)
-		navigationController.navigationBar.titleTextAttributes = [.font: UIFont(name: "Palatino", size: 18)!]
-		navigationController.navigationBar.barStyle = .black
+		let navigationController = RootNavigationController(rootViewController: rootViewController)
+		navigationController.navigationBar.titleTextAttributes = [
+			.font: UIFont(name: "Palatino", size: 20)!,
+			.foregroundColor: UIColor.white
+		]
+		navigationController.navigationBar.isTranslucent = false
+		navigationController.navigationBar.barTintColor = UIColor(white: 0.1, alpha: 1)
+		navigationController.navigationBar.tintColor = UIColor(white: 0.9, alpha: 1)
 
 		self.navigationController = navigationController
 	}

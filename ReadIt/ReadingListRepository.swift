@@ -8,23 +8,26 @@ import RxSwift
 
 class ReadingListRepository {
 
-	let client: Client
+	private let client: PocketClient
+	private var provider: MoyaProvider<PocketService>
 
-	init(client: Client) {
+	init(client: PocketClient) {
 		self.client = client
+		self.provider = client.create()
+	}
+
+	func login() -> Single<Bool> {
+		return client.login()
 	}
 
 	func fetch() -> Single<[Pocket]> {
-		let provider = client.create(PocketService.self)
+		provider = client.create()
 		return provider.rx
 				.request(.get)
-				.do(onError: { error in
-					print(error)
-				})
-				.map(self.serializePocketResponse)
+				.map(serializePocket(response:))
 	}
 
-	private func serializePocketResponse(response: Moya.Response) throws -> [Pocket] {
+	private func serializePocket(response: Moya.Response) throws -> [Pocket] {
 		let json = try response.mapJSON()
 
 		guard let list = (json as? NSDictionary)?.value(forKeyPath: "list") as? [String: Any?] else {

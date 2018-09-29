@@ -10,6 +10,8 @@ protocol ReadingListModel: class {
 
 	func execute() -> Single<[Reading]>
 
+	func login() -> Single<Bool>
+
 }
 
 class ReadingListUseCase: ReadingListModel {
@@ -24,6 +26,10 @@ class ReadingListUseCase: ReadingListModel {
 		return repository.fetch().map { pocketList in
 			return pocketList.map(Reading.init)
 		}
+	}
+
+	func login() -> Single<Bool> {
+		return repository.login()
 	}
 
 }

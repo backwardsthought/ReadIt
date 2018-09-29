@@ -4,6 +4,9 @@
 //
 
 import Foundation
+import UIKit
+import Moya
+import RxSwift
 
 struct Pocket: Codable {
 
@@ -22,3 +25,4 @@ struct Pocket: Codable {
 	}
 
 }
+

@@ -8,6 +8,8 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
+import AuthenticationServices
 
 fileprivate extension String {
 
@@ -21,10 +23,14 @@ class ReadingListViewController: UIViewController {
 
 	private let disposeBag = DisposeBag()
 
+	private var isLoading = false
+
 	let viewModel: ReadingListViewModelType
 	let tableView: UITableView
 
 	var readingsList: [Reading] = []
+	var isLogged: Bool = false
+	var authSession: ASWebAuthenticationSession? = nil
 
 	init(viewModel: ReadingListViewModelType) {
 		self.viewModel = viewModel
@@ -59,9 +65,32 @@ class ReadingListViewController: UIViewController {
 				})
 				.disposed(by: disposeBag)
 
+		viewModel.isLogged
+				.subscribe(onNext: { logged in
+					self.isLogged = logged
+					self.navigationItem.leftBarButtonItem = nil
+				})
+				.disposed(by: disposeBag)
+
+		let leftButtonItem = UIBarButtonItem(title: "Login", style: .plain, target: nil, action: nil)
+		leftButtonItem.rx.tap.subscribe(onNext: { _ in
+			self.viewModel.login()
+		}).disposed(by: disposeBag)
+
+		let rightButtonItem = UIBarButtonItem(title: "Reload", style: .plain, target: nil, action: nil)
+		rightButtonItem.rx.tap.subscribe(onNext: { _ in
+			self.viewModel.load()
+		}).disposed(by: disposeBag)
+
+		navigationItem.leftBarButtonItem = leftButtonItem
+		navigationItem.rightBarButtonItem = rightButtonItem
+
 		viewModel.load()
 	}
 
+	override var preferredStatusBarStyle: UIStatusBarStyle {
+		return .lightContent
+	}
 }
 
 extension ReadingListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -85,4 +114,5 @@ extension ReadingListViewController: UITableViewDataSource, UITableViewDelegate 
 		tableView.deselectRow(at: indexPath, animated: true)
 		print("Did select row at \(indexPath.row)")
 	}
+
 }

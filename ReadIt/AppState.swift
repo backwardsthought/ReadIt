@@ -3,7 +3,12 @@
 // Copyright (c) 2018 Copyisright. All rights reserved.
 //
 
-struct AppState {
+class AppState {
 
+	let pocketClient: PocketClient
+
+	init(pocketClient: PocketClient) {
+		self.pocketClient = pocketClient
+	}
 
 }

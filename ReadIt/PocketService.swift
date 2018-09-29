@@ -12,16 +12,12 @@ enum PocketService {
 extension PocketService: TargetType {
 
 	public var baseURL: URL {
-		let url = URL(string: "https://getpocket.com")!
+		let url = URL(string: Pocket.baseURL)!
 		return url
 	}
 
 	public var path: String {
-		if case .get = self {
-			return "/v3/get"
-		}
-
-		return ""
+		return "/v3/get"
 	}
 
 	public var method: Moya.Method {
@@ -37,7 +33,7 @@ extension PocketService: TargetType {
 	}
 
 	public var headers: [String: String]? {
-		return []
+		return [:]
 	}
 
 }
