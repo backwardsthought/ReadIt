@@ -21,6 +21,7 @@
 		1E90ED4673A756EEB9D7ECF3 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E1DAE9F10AA9D7B5C92B /* Reading.swift */; };
 		1E90EEDB5514BC1BB7953C2B /* PocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E94B3D6E0C75B44A8110 /* PocketClient.swift */; };
 		1E90EF482DE5323A00B867EB /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E4EF8F9283E07A71EC18 /* UIView+Constraints.swift */; };
+		1E90EF54DA4E662232BAE3F7 /* Pocket+OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EFB20E4794067AF86F88 /* Pocket+OAuth.swift */; };
 		1E90EF650E2F226859E9DDC8 /* ReadingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E02D93343B1DE08BFE04 /* ReadingListViewModel.swift */; };
 		2756AE1B215DD7F40075136E /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2756AE19215DD72D0075136E /* SafariServices.framework */; };
 		2756AE1D215DE9850075136E /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2756AE1C215DE9850075136E /* AuthenticationServices.framework */; };
@@ -61,6 +62,7 @@
 		1E90EE4A06AF92D296C6A288 /* ReadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingCell.swift; sourceTree = "<group>"; };
 		1E90EF1034BEAF105E8DA0A4 /* Pocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pocket.swift; sourceTree = "<group>"; };
 		1E90EF2839851A9A3A18A467 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		1E90EFB20E4794067AF86F88 /* Pocket+OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pocket+OAuth.swift"; sourceTree = "<group>"; };
 		1E90EFBB27CC31246EE8AC82 /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
 		2756AE19215DD72D0075136E /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		2756AE1C215DE9850075136E /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
@@ -149,6 +151,7 @@
 				1E90E8E77D897EEABD234BAB /* Model.swift */,
 				1E90E2119D0799A52A980644 /* ReadingListRepository.swift */,
 				1E90EABD8FBB436105BDDE6E /* Pocket+Credentials.swift */,
+				1E90EFB20E4794067AF86F88 /* Pocket+OAuth.swift */,
 			);
 			path = ReadIt;
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 				1E90EAA476FA6DD42F883880 /* Model.swift in Sources */,
 				1E90E4D87B607F5AF19745F2 /* ReadingListRepository.swift in Sources */,
 				1E90E7F3C73885D571588F78 /* Pocket+Credentials.swift in Sources */,
+				1E90EF54DA4E662232BAE3F7 /* Pocket+OAuth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
