@@ -5,7 +5,7 @@
 
 extension Pocket {
 
-	static var host: String {
+	static var baseURL: String {
 		return "https://getpocket.com"
 	}
 
@@ -14,7 +14,7 @@ extension Pocket {
 	}
 
 	static var consumerKey: String {
-		return ""
+		return "79730-c6c1ac3bf9fb502b4ac0a1b6"
 	}
 
 }
