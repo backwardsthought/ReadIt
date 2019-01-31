@@ -10,6 +10,7 @@ import RxSwift
 
 struct Pocket: Codable {
 
+	let id: String
 	let title: String
 	let url: String
 	let hasImage: String
@@ -17,6 +18,7 @@ struct Pocket: Codable {
 	let imageUrl: String?
 
 	enum CodingKeys: String, CodingKey {
+		case id = "item_id"
 		case title = "resolved_title"
 		case url = "resolved_url"
 		case timeToRead = "time_to_read"

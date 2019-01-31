@@ -40,7 +40,7 @@ class RootCoordinator: Coordinator {
 
 		let navigationController = RootNavigationController(rootViewController: rootViewController)
 		navigationController.navigationBar.titleTextAttributes = [
-			.font: UIFont(name: "Palatino", size: 20)!,
+			.font: UIFont(name: "Palatino", size: 24)!,
 			.foregroundColor: UIColor.white
 		]
 		navigationController.navigationBar.isTranslucent = false

@@ -100,12 +100,20 @@ extension ReadingListViewController: UITableViewDataSource, UITableViewDelegate 
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: .genericIdentifier, for: indexPath)
+		let cell = tableView.dequeueReusableCell(withIdentifier: .genericIdentifier, for: indexPath) as! ReadingCell
 
 		let reading = readingsList[indexPath.row]
 
-		cell.textLabel?.text = reading.title
-		cell.detailTextLabel?.text = reading.source
+		cell.titleLabel.text = reading.title
+		cell.subtitleLabel.text = reading.source
+
+		if let _ = reading.imageUrl {
+			self.viewModel.image(for: reading)
+					.subscribe(onSuccess: { image in
+						cell.coverView.image = image
+					})
+					.disposed(by: disposeBag)
+		}
 
 		return cell
 	}

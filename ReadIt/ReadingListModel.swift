@@ -12,6 +12,8 @@ protocol ReadingListModel: class {
 
 	func login() -> Single<Bool>
 
+	func download(imageFor reading: Reading) -> Single<UIImage>
+
 }
 
 class ReadingListUseCase: ReadingListModel {
@@ -32,13 +34,34 @@ class ReadingListUseCase: ReadingListModel {
 		return repository.login()
 	}
 
+	func download(imageFor reading: Reading) -> Single<UIImage> {
+		guard let imageUrl = reading.imageUrl else {
+			fatalError() // TODO some message please
+		}
+
+		return repository.downloadImage(url: imageUrl)
+				.map { data in
+					guard let image = UIImage(data: data) else {
+						return UIImage() // FIXME what the fuck
+					}
+					return image
+				}
+	}
+
 }
 
 extension Reading {
 
 	init(pocket: Pocket) {
-		self.init(title: pocket.title, source: pocket.url)
+		let url: URL?
+
+		if let imageUrl = pocket.imageUrl {
+			url = URL(string: imageUrl)
+		} else {
+			url = nil
+		}
+
+		self.init(id: pocket.id, title: pocket.title, source: pocket.url, imageUrl: url)
 	}
 
 }
-

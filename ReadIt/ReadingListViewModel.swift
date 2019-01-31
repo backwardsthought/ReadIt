@@ -3,6 +3,7 @@
 // Copyright (c) 2018 Copyisright. All rights reserved.
 //
 
+import UIKit
 import RxSwift
 import RxCocoa
 
@@ -16,6 +17,8 @@ protocol ReadingListViewModelType: class {
 
 	func login()
 
+	func image(for reading: Reading) -> Single<UIImage>
+
 }
 
 class ReadingListViewModel: ReadingListViewModelType {
@@ -28,6 +31,8 @@ class ReadingListViewModel: ReadingListViewModelType {
 	let readingList: BehaviorRelay<[Reading]>
 	let isLogged: BehaviorRelay<Bool>
 
+	private let imagesCache: ReplaySubject<(String, UIImage)>
+
 	deinit {
 		executionDisposable?.dispose()
 		loginDisposable?.dispose()
@@ -38,12 +43,36 @@ class ReadingListViewModel: ReadingListViewModelType {
 
 		readingList = BehaviorRelay(value: [])
 		isLogged = BehaviorRelay(value: false)
+		imagesCache = ReplaySubject.create(bufferSize: 20)
 	}
 
 	func load() {
 		executionDisposable?.dispose()
 		executionDisposable = model.execute()
 				.subscribe(onSuccess: readingList.accept)
+	}
+
+	func image(for reading: Reading) -> Single<UIImage> {
+		let downloading = model
+				.download(imageFor: reading)
+				.map { (reading.id, $0) }
+				.do(onSuccess: imagesCache.onNext)
+
+		let cached = Observable<(String, UIImage)>
+				.create { [weak self] observer in
+					let disposable = self?.imagesCache.bind(to: observer)
+
+					observer.onCompleted()
+
+					return Disposables.create {
+						disposable?.dispose()
+					}
+				}
+				.filter { reading.id == $0.0 }
+				.map { $0.1 }
+				.asMaybe()
+
+		return cached.ifEmpty(switchTo: downloading)
 	}
 
 	func login() {
