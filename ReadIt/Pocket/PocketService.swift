@@ -12,7 +12,7 @@ enum PocketService {
 extension PocketService: TargetType {
 
 	public var baseURL: URL {
-		let url = URL(string: Pocket.baseURL)!
+		let url = URL(string: Pocket.host)!
 		return url
 	}
 
@@ -29,11 +29,11 @@ extension PocketService: TargetType {
 	}
 
 	public var task: Task {
-		return .requestPlain
+		return .requestParameters(parameters: ["detailType": "complete"], encoding: URLEncoding.default)
 	}
 
 	public var headers: [String: String]? {
-		return [:]
+        return [:]
 	}
 
 }

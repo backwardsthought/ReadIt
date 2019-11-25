@@ -13,12 +13,23 @@ class PocketClient {
 	private let disposeBag = DisposeBag()
 
 	private var authSession: ASWebAuthenticationSession?
-	private var credentials = Pocket.OAuth()
+	private var credentials = OAuth()
+    
+    var contextProvider: ASWebAuthenticationPresentationContextProviding
+    
+    init(contextProvider: ASWebAuthenticationPresentationContextProviding) {
+        self.contextProvider = contextProvider
+    }
 
 	func create() -> MoyaProvider<PocketService> {
 		if let accessToken = credentials.accessToken {
 			let endpointClosure = { (target: PocketService) -> Endpoint in
-				let authParameters = ["consumer_key": Pocket.consumerKey, "access_token": accessToken]
+				var authParameters = ["consumer_key": Pocket.consumerKey, "access_token": accessToken]
+                
+                if case .requestParameters(let unwrappedParams, _) = target.task,
+                    let params = unwrappedParams as? [String: String] {
+                    authParameters.merge(params) { _, target in target }
+                }
 
 				return Endpoint(
 						url: URL(target: target).absoluteString,
@@ -35,24 +46,21 @@ class PocketClient {
 		return MoyaProvider<PocketService>()
 	}
 
-	func login() -> Single<Bool> {
-		let credentials = self.credentials
+	func login() -> Completable {
 		return requestToken()
-				.map { code in
-					credentials.code = code
-					return try credentials.authenticateURL()
-				}
-				.flatMapCompletable(promptUser(url:))
+                .do(onSuccess: updateCode(code:))
+                .asCompletable()
+                .andThen(promptUser())
 				.andThen(authorize())
-				.map { accessToken in
-					credentials.accessToken = accessToken
-					return true
-				}
+				.do (onSuccess: updateAccessToken(accessToken:))
+                .asCompletable()
 	}
+    
+    // MARK: - Requests
 
 	private func requestToken() -> Single<String> {
 		return Single.create { observer in
-			let url = Pocket.OAuth.requestURL
+			let url = OAuth.requestURL
 			let dataRequest = Alamofire.request(url)
 					.validate()
 					.response { response in
@@ -75,19 +83,26 @@ class PocketClient {
 		}
 	}
 
-	private func promptUser(url: URL) -> Completable {
+	private func promptUser() -> Completable {
+        let credentials = self.credentials
 		return Completable.create { [weak self] observer in
-			let session = ASWebAuthenticationSession(url: url, callbackURLScheme: Pocket.redirectUri) { url, error in
-				if let _ = url {
-					observer(.completed)
-				} else if let error = error {
-					observer(.error(error))
-				}
-			}
-
-			session.start()
-
-			self?.authSession = session
+            do {
+                let url = try credentials.authenticateURL()
+                let session = ASWebAuthenticationSession(url: url, callbackURLScheme: Pocket.redirectUri) { url, error in
+                    if let _ = url {
+                        observer(.completed)
+                    } else if let error = error {
+                        observer(.error(error))
+                    }
+                }
+                
+                session.presentationContextProvider = self?.contextProvider
+                session.start()
+                
+                self?.authSession = session
+            } catch {
+                observer(.error(error))
+            }
 
 			return Disposables.create {
 				self?.authSession = nil
@@ -135,5 +150,15 @@ class PocketClient {
 			}
 		}
 	}
+    
+    // MARK: - Credentials updating
+    
+    func updateCode(code: String) {
+        credentials.code = code
+    }
+    
+    func updateAccessToken(accessToken: String) {
+        credentials.accessToken = accessToken
+    }
 
 }

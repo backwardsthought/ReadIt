@@ -20,7 +20,7 @@ DEPENDENCIES:
   - RxSwift
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - Moya
     - Result
@@ -36,4 +36,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 8b22356f03bf886fcb7d1603d7181b37a2a828ca
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.6.0

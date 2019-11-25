@@ -19,4 +19,5 @@ class ReadingCell: UITableViewCell {
 	required init?(coder aDecoder: NSCoder) {
 		fatalError("You should not use init?(coder:), ever!")
 	}
+    
 }

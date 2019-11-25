@@ -14,7 +14,7 @@ extension Pocket {
 	}
 
 	static var consumerKey: String {
-		return ""
+		return "87395-6e4e1c684918c20703c9b867"
 	}
 
 }

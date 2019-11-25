@@ -11,12 +11,10 @@ import RxSwift
 import RxCocoa
 import AuthenticationServices
 
-fileprivate extension String {
-
-	static var genericIdentifier: String {
-		return "Generic Identifier"
-	}
-
+protocol ReadingListNavigationDelegate: class {
+    
+    func navigate(to reading: Reading)
+    
 }
 
 class ReadingListViewController: UIViewController {
@@ -24,15 +22,19 @@ class ReadingListViewController: UIViewController {
 	private let disposeBag = DisposeBag()
 
 	private var isLoading = false
+    private let tableView: UITableView
+    
+    private var readingsList: [Reading] = []
+    private var isLogged: Bool = false
+    private var authSession: ASWebAuthenticationSession? = nil
 
-	let viewModel: ReadingListViewModelType
-	let tableView: UITableView
+    let useCase: ReadingListUseCase
+    let viewModel: ReadingListViewModelType
+    
+    weak var navigationDelegate: ReadingListNavigationDelegate?
 
-	var readingsList: [Reading] = []
-	var isLogged: Bool = false
-	var authSession: ASWebAuthenticationSession? = nil
-
-	init(viewModel: ReadingListViewModelType) {
+    init(useCase: ReadingListUseCase, viewModel: ReadingListViewModelType) {
+        self.useCase = useCase
 		self.viewModel = viewModel
 		self.tableView = UITableView(frame: .null, style: .plain)
 
@@ -59,38 +61,26 @@ class ReadingListViewController: UIViewController {
 		view.addConstraintsForAllEdges(of: tableView)
 
 		viewModel.readingList
-				.subscribe(onNext: { readingsList in
-					self.readingsList = readingsList
-					self.tableView.reloadData()
+				.subscribe(onNext: { [weak self] readingsList in
+					self?.readingsList = readingsList
+					self?.tableView.reloadData()
 				})
 				.disposed(by: disposeBag)
-
-		viewModel.isLogged
-				.subscribe(onNext: { logged in
-					self.isLogged = logged
-					self.navigationItem.leftBarButtonItem = nil
-				})
-				.disposed(by: disposeBag)
-
-		let leftButtonItem = UIBarButtonItem(title: "Login", style: .plain, target: nil, action: nil)
-		leftButtonItem.rx.tap.subscribe(onNext: { _ in
-			self.viewModel.login()
-		}).disposed(by: disposeBag)
 
 		let rightButtonItem = UIBarButtonItem(title: "Reload", style: .plain, target: nil, action: nil)
-		rightButtonItem.rx.tap.subscribe(onNext: { _ in
-			self.viewModel.load()
+		rightButtonItem.rx.tap.subscribe(onNext: { [weak self] _ in
+			self?.useCase.loadContent()
 		}).disposed(by: disposeBag)
 
-		navigationItem.leftBarButtonItem = leftButtonItem
 		navigationItem.rightBarButtonItem = rightButtonItem
 
-		viewModel.load()
+		useCase.loadContent()
 	}
 
 	override var preferredStatusBarStyle: UIStatusBarStyle {
 		return .lightContent
 	}
+    
 }
 
 extension ReadingListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -112,7 +102,20 @@ extension ReadingListViewController: UITableViewDataSource, UITableViewDelegate 
 
 	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
-		print("Did select row at \(indexPath.row)")
+        
+        let reading = readingsList[indexPath.row]
+        
+        navigationDelegate?.navigate(to: reading)
+        
+        print("Did select row at \(indexPath.row); title: \(reading.title)")
 	}
 
+}
+
+fileprivate extension String {
+    
+    static var genericIdentifier: String {
+        return "Generic Identifier"
+    }
+    
 }

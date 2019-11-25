@@ -6,6 +6,7 @@
 import Foundation
 import UIKit
 import RxSwift
+import AuthenticationServices
 
 class RootNavigationController: UINavigationController {
 
@@ -17,42 +18,58 @@ class RootNavigationController: UINavigationController {
 
 class RootCoordinator: Coordinator {
 
-	weak var window: UIWindow?
-	weak var navigationController: RootNavigationController?
-
-	let appState: AppState
+	weak var window: UIWindow!
+    weak var navigationController: RootNavigationController!
+    
+    var readingListCoordinator: ReadingListCoordinator?
 
 	init(window: UIWindow) {
 		self.window = window
 
-		let client = PocketClient()
-
-		let appState = AppState(pocketClient: client)
-		self.appState = appState
-
-		let repository = ReadingListRepository(client: client)
-
-		let model = ReadingListUseCase(repository: repository)
-
-		let viewModel = ReadingListViewModel(model: model)
-
-		let rootViewController = ReadingListViewController(viewModel: viewModel)
-
-		let navigationController = RootNavigationController(rootViewController: rootViewController)
-		navigationController.navigationBar.titleTextAttributes = [
+		let navigationController = RootNavigationController()
+        navigationController.navigationBar.titleTextAttributes = [
 			.font: UIFont(name: "Palatino", size: 20)!,
 			.foregroundColor: UIColor.white
 		]
 		navigationController.navigationBar.isTranslucent = false
-		navigationController.navigationBar.barTintColor = UIColor(white: 0.1, alpha: 1)
-		navigationController.navigationBar.tintColor = UIColor(white: 0.9, alpha: 1)
+		navigationController.navigationBar.barTintColor = .cyan //UIColor(white: 0.1, alpha: 1)
+		navigationController.navigationBar.tintColor = .black //UIColor(white: 0.9, alpha: 1)
 
 		self.navigationController = navigationController
+        
+        let pocket = PocketClient(contextProvider: getContextProvider())
+        readingListCoordinator = ReadingListCoordinator(pocket: pocket)
 	}
 
 	func start() {
+        readingListCoordinator?.start(navigable: navigationController)
+        
 		window?.rootViewController = navigationController
 		window?.makeKeyAndVisible()
 	}
 
+}
+
+// MARK: - Content Provider
+
+extension RootCoordinator {
+    
+    @objc private class ContextProvider: NSObject, ASWebAuthenticationPresentationContextProviding {
+        
+        weak var window: UIWindow!
+        
+        init(window: UIWindow) {
+            self.window = window
+        }
+        
+        func presentationAnchor(for session: ASWebAuthenticationSession) -> ASPresentationAnchor {
+            return self.window
+        }
+        
+    }
+    
+    func getContextProvider() -> ASWebAuthenticationPresentationContextProviding {
+        return ContextProvider(window: self.window)
+    }
+    
 }

@@ -15,7 +15,6 @@
 		1E90E489953BEC3684377A1B /* PocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E4D3A972B62CDE9CD82B /* PocketService.swift */; };
 		1E90E4D87B607F5AF19745F2 /* ReadingListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E2119D0799A52A980644 /* ReadingListRepository.swift */; };
 		1E90E7F3C73885D571588F78 /* Pocket+Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EABD8FBB436105BDDE6E /* Pocket+Credentials.swift */; };
-		1E90EAA476FA6DD42F883880 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E8E77D897EEABD234BAB /* Model.swift */; };
 		1E90EAE20AB3C94F8517FE3A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E671C9CE910F231AF810 /* Coordinator.swift */; };
 		1E90EC4BC60946097FECF89D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EF2839851A9A3A18A467 /* AppState.swift */; };
 		1E90ED4673A756EEB9D7ECF3 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E1DAE9F10AA9D7B5C92B /* Reading.swift */; };
@@ -28,10 +27,22 @@
 		2756AE1F215DE98F0075136E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2756AE1E215DE98F0075136E /* WebKit.framework */; };
 		2768D6A9212BAC9C000CACCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2768D6A8212BAC9C000CACCC /* AppDelegate.swift */; };
 		2768D6AB212BAC9C000CACCC /* ReadingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2768D6AA212BAC9C000CACCC /* ReadingListViewController.swift */; };
-		2768D6AE212BAC9C000CACCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2768D6AC212BAC9C000CACCC /* Main.storyboard */; };
 		2768D6B0212BAC9D000CACCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2768D6AF212BAC9D000CACCC /* Assets.xcassets */; };
 		2768D6B3212BAC9D000CACCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2768D6B1212BAC9D000CACCC /* LaunchScreen.storyboard */; };
 		2768D6BE212BAC9E000CACCC /* ReadItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2768D6BD212BAC9E000CACCC /* ReadItTests.swift */; };
+		277E04D32313867400702A71 /* ReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04D22313867400702A71 /* ReadingViewController.swift */; };
+		277E04D52313868C00702A71 /* ReadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04D42313868C00702A71 /* ReadingViewModel.swift */; };
+		277E04D72313869700702A71 /* ReadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04D62313869700702A71 /* ReadingModel.swift */; };
+		277E04DA2313880A00702A71 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04D92313880A00702A71 /* ReadingView.swift */; };
+		277E04DC2313A59B00702A71 /* ReadingListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04DB2313A59B00702A71 /* ReadingListRouter.swift */; };
+		277E04DE2313A5B800702A71 /* ReadingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04DD2313A5B800702A71 /* ReadingRouter.swift */; };
+		277E04E02313A70900702A71 /* ReadingListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04DF2313A70900702A71 /* ReadingListCoordinator.swift */; };
+		277E04E22313AD5500702A71 /* Navigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04E12313AD5500702A71 /* Navigable.swift */; };
+		277E04E42313AFFF00702A71 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04E32313AFFF00702A71 /* View.swift */; };
+		277E04E62313B6B500702A71 /* UINavigationController+Navigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04E52313B6B500702A71 /* UINavigationController+Navigable.swift */; };
+		27A5E55E23148C34007FB8D2 /* ReadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5E55D23148C34007FB8D2 /* ReadingCoordinator.swift */; };
+		27A5E560231490ED007FB8D2 /* ReadingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5E55F231490ED007FB8D2 /* ReadingRepository.swift */; };
+		27F3A12523276A5E00D8A173 /* ReadingImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F3A12423276A5E00D8A173 /* ReadingImageViewCell.swift */; };
 		D5AC15A75E7F196F3EDC1A97 /* Pods_ReadIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A9A9143D52230A08A9CC32 /* Pods_ReadIt.framework */; };
 		E6755158BF1C6F4D8EE03136 /* Pods_ReadItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D67064E17CBA0E69AA5C117 /* Pods_ReadItTests.framework */; };
 /* End PBXBuildFile section */
@@ -56,7 +67,6 @@
 		1E90E4EF8F9283E07A71EC18 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		1E90E671C9CE910F231AF810 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		1E90E6AD99F54E51D580AEA0 /* ReadingListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingListModel.swift; sourceTree = "<group>"; };
-		1E90E8E77D897EEABD234BAB /* Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		1E90E94B3D6E0C75B44A8110 /* PocketClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PocketClient.swift; sourceTree = "<group>"; };
 		1E90EABD8FBB436105BDDE6E /* Pocket+Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pocket+Credentials.swift"; sourceTree = "<group>"; };
 		1E90EE4A06AF92D296C6A288 /* ReadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingCell.swift; sourceTree = "<group>"; };
@@ -70,13 +80,25 @@
 		2768D6A5212BAC9C000CACCC /* ReadIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2768D6A8212BAC9C000CACCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2768D6AA212BAC9C000CACCC /* ReadingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListViewController.swift; sourceTree = "<group>"; };
-		2768D6AD212BAC9C000CACCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2768D6AF212BAC9D000CACCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2768D6B2212BAC9D000CACCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2768D6B4212BAC9D000CACCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2768D6B9212BAC9E000CACCC /* ReadItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReadItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2768D6BD212BAC9E000CACCC /* ReadItTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadItTests.swift; sourceTree = "<group>"; };
 		2768D6BF212BAC9E000CACCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		277E04D22313867400702A71 /* ReadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingViewController.swift; sourceTree = "<group>"; };
+		277E04D42313868C00702A71 /* ReadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingViewModel.swift; sourceTree = "<group>"; };
+		277E04D62313869700702A71 /* ReadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingModel.swift; sourceTree = "<group>"; };
+		277E04D92313880A00702A71 /* ReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingView.swift; sourceTree = "<group>"; };
+		277E04DB2313A59B00702A71 /* ReadingListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListRouter.swift; sourceTree = "<group>"; };
+		277E04DD2313A5B800702A71 /* ReadingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingRouter.swift; sourceTree = "<group>"; };
+		277E04DF2313A70900702A71 /* ReadingListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListCoordinator.swift; sourceTree = "<group>"; };
+		277E04E12313AD5500702A71 /* Navigable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigable.swift; sourceTree = "<group>"; };
+		277E04E32313AFFF00702A71 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		277E04E52313B6B500702A71 /* UINavigationController+Navigable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Navigable.swift"; sourceTree = "<group>"; };
+		27A5E55D23148C34007FB8D2 /* ReadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingCoordinator.swift; sourceTree = "<group>"; };
+		27A5E55F231490ED007FB8D2 /* ReadingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingRepository.swift; sourceTree = "<group>"; };
+		27F3A12423276A5E00D8A173 /* ReadingImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingImageViewCell.swift; sourceTree = "<group>"; };
 		304097338FEDE853AFE7D89C /* Pods-ReadIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadIt/Pods-ReadIt.debug.xcconfig"; sourceTree = "<group>"; };
 		3D67064E17CBA0E69AA5C117 /* Pods_ReadItTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadItTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A9A9143D52230A08A9CC32 /* Pods_ReadIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,6 +129,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		275C51DA230F893C00F9749A /* ReadingList */ = {
+			isa = PBXGroup;
+			children = (
+				1E90E6AD99F54E51D580AEA0 /* ReadingListModel.swift */,
+				2768D6AA212BAC9C000CACCC /* ReadingListViewController.swift */,
+				1E90E02D93343B1DE08BFE04 /* ReadingListViewModel.swift */,
+				1E90E2119D0799A52A980644 /* ReadingListRepository.swift */,
+				1E90EE4A06AF92D296C6A288 /* ReadingCell.swift */,
+				277E04DB2313A59B00702A71 /* ReadingListRouter.swift */,
+				277E04DF2313A70900702A71 /* ReadingListCoordinator.swift */,
+			);
+			path = ReadingList;
+			sourceTree = "<group>";
+		};
+		275C51DB230F895500F9749A /* Pocket */ = {
+			isa = PBXGroup;
+			children = (
+				1E90EF1034BEAF105E8DA0A4 /* Pocket.swift */,
+				1E90E94B3D6E0C75B44A8110 /* PocketClient.swift */,
+				1E90E4D3A972B62CDE9CD82B /* PocketService.swift */,
+				1E90EABD8FBB436105BDDE6E /* Pocket+Credentials.swift */,
+				1E90EFB20E4794067AF86F88 /* Pocket+OAuth.swift */,
+			);
+			path = Pocket;
+			sourceTree = "<group>";
+		};
 		2768D69C212BAC9C000CACCC = {
 			isa = PBXGroup;
 			children = (
@@ -131,27 +179,21 @@
 			isa = PBXGroup;
 			children = (
 				2768D6A8212BAC9C000CACCC /* AppDelegate.swift */,
-				2768D6AA212BAC9C000CACCC /* ReadingListViewController.swift */,
-				2768D6AC212BAC9C000CACCC /* Main.storyboard */,
+				1E90E1DAE9F10AA9D7B5C92B /* Reading.swift */,
+				1E90E480D725258213EEEA03 /* RootCoordinator.swift */,
+				275C51DB230F895500F9749A /* Pocket */,
+				275C51DA230F893C00F9749A /* ReadingList */,
+				277E04D8231386A100702A71 /* Reading */,
 				2768D6AF212BAC9D000CACCC /* Assets.xcassets */,
 				2768D6B1212BAC9D000CACCC /* LaunchScreen.storyboard */,
 				2768D6B4212BAC9D000CACCC /* Info.plist */,
-				1E90E480D725258213EEEA03 /* RootCoordinator.swift */,
 				1E90E671C9CE910F231AF810 /* Coordinator.swift */,
-				1E90E02D93343B1DE08BFE04 /* ReadingListViewModel.swift */,
+				277E04E12313AD5500702A71 /* Navigable.swift */,
+				277E04E32313AFFF00702A71 /* View.swift */,
+				277E04E52313B6B500702A71 /* UINavigationController+Navigable.swift */,
 				1E90E4EF8F9283E07A71EC18 /* UIView+Constraints.swift */,
 				1E90EFBB27CC31246EE8AC82 /* NSLayoutConstraint+Extensions.swift */,
-				1E90E1DAE9F10AA9D7B5C92B /* Reading.swift */,
-				1E90EE4A06AF92D296C6A288 /* ReadingCell.swift */,
 				1E90EF2839851A9A3A18A467 /* AppState.swift */,
-				1E90E4D3A972B62CDE9CD82B /* PocketService.swift */,
-				1E90EF1034BEAF105E8DA0A4 /* Pocket.swift */,
-				1E90E6AD99F54E51D580AEA0 /* ReadingListModel.swift */,
-				1E90E94B3D6E0C75B44A8110 /* PocketClient.swift */,
-				1E90E8E77D897EEABD234BAB /* Model.swift */,
-				1E90E2119D0799A52A980644 /* ReadingListRepository.swift */,
-				1E90EABD8FBB436105BDDE6E /* Pocket+Credentials.swift */,
-				1E90EFB20E4794067AF86F88 /* Pocket+OAuth.swift */,
 			);
 			path = ReadIt;
 			sourceTree = "<group>";
@@ -163,6 +205,21 @@
 				2768D6BF212BAC9E000CACCC /* Info.plist */,
 			);
 			path = ReadItTests;
+			sourceTree = "<group>";
+		};
+		277E04D8231386A100702A71 /* Reading */ = {
+			isa = PBXGroup;
+			children = (
+				277E04D92313880A00702A71 /* ReadingView.swift */,
+				27F3A12423276A5E00D8A173 /* ReadingImageViewCell.swift */,
+				277E04D22313867400702A71 /* ReadingViewController.swift */,
+				277E04D42313868C00702A71 /* ReadingViewModel.swift */,
+				277E04D62313869700702A71 /* ReadingModel.swift */,
+				27A5E55F231490ED007FB8D2 /* ReadingRepository.swift */,
+				277E04DD2313A5B800702A71 /* ReadingRouter.swift */,
+				27A5E55D23148C34007FB8D2 /* ReadingCoordinator.swift */,
+			);
+			path = Reading;
 			sourceTree = "<group>";
 		};
 		2D3DDF6ADE4C18C130762D71 /* Frameworks */ = {
@@ -274,7 +331,6 @@
 			files = (
 				2768D6B3212BAC9D000CACCC /* LaunchScreen.storyboard in Resources */,
 				2768D6B0212BAC9D000CACCC /* Assets.xcassets in Resources */,
-				2768D6AE212BAC9C000CACCC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -312,7 +368,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ReadIt/Pods-ReadIt-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ReadIt/Pods-ReadIt-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
@@ -329,7 +385,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ReadIt/Pods-ReadIt-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ReadIt/Pods-ReadIt-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FA6AE1D6C19080BF8FC7E6AD /* [CP] Check Pods Manifest.lock */ = {
@@ -357,24 +413,36 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				277E04E42313AFFF00702A71 /* View.swift in Sources */,
 				2768D6AB212BAC9C000CACCC /* ReadingListViewController.swift in Sources */,
+				277E04D52313868C00702A71 /* ReadingViewModel.swift in Sources */,
 				2768D6A9212BAC9C000CACCC /* AppDelegate.swift in Sources */,
 				1E90E337083E32ED4028B70C /* RootCoordinator.swift in Sources */,
+				277E04D72313869700702A71 /* ReadingModel.swift in Sources */,
+				277E04E62313B6B500702A71 /* UINavigationController+Navigable.swift in Sources */,
 				1E90EAE20AB3C94F8517FE3A /* Coordinator.swift in Sources */,
 				1E90EF650E2F226859E9DDC8 /* ReadingListViewModel.swift in Sources */,
+				277E04D32313867400702A71 /* ReadingViewController.swift in Sources */,
 				1E90EF482DE5323A00B867EB /* UIView+Constraints.swift in Sources */,
+				27A5E560231490ED007FB8D2 /* ReadingRepository.swift in Sources */,
 				1E90E1708B74A68637F3F47C /* NSLayoutConstraint+Extensions.swift in Sources */,
 				1E90ED4673A756EEB9D7ECF3 /* Reading.swift in Sources */,
 				1E90E19063B611B041C4C20C /* ReadingCell.swift in Sources */,
+				277E04DA2313880A00702A71 /* ReadingView.swift in Sources */,
 				1E90EC4BC60946097FECF89D /* AppState.swift in Sources */,
 				1E90E489953BEC3684377A1B /* PocketService.swift in Sources */,
+				27A5E55E23148C34007FB8D2 /* ReadingCoordinator.swift in Sources */,
 				1E90E4680AB20FF207AD4A5C /* Pocket.swift in Sources */,
 				1E90E42C4FD6010F29BA5403 /* ReadingListModel.swift in Sources */,
+				277E04E02313A70900702A71 /* ReadingListCoordinator.swift in Sources */,
 				1E90EEDB5514BC1BB7953C2B /* PocketClient.swift in Sources */,
-				1E90EAA476FA6DD42F883880 /* Model.swift in Sources */,
+				277E04DE2313A5B800702A71 /* ReadingRouter.swift in Sources */,
+				277E04E22313AD5500702A71 /* Navigable.swift in Sources */,
 				1E90E4D87B607F5AF19745F2 /* ReadingListRepository.swift in Sources */,
+				27F3A12523276A5E00D8A173 /* ReadingImageViewCell.swift in Sources */,
 				1E90E7F3C73885D571588F78 /* Pocket+Credentials.swift in Sources */,
 				1E90EF54DA4E662232BAE3F7 /* Pocket+OAuth.swift in Sources */,
+				277E04DC2313A59B00702A71 /* ReadingListRouter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,14 +465,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		2768D6AC212BAC9C000CACCC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				2768D6AD212BAC9C000CACCC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		2768D6B1212BAC9D000CACCC /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -538,7 +598,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47LVS8UB5Q;
 				INFOPLIST_FILE = ReadIt/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -558,7 +618,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47LVS8UB5Q;
 				INFOPLIST_FILE = ReadIt/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
