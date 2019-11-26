@@ -82,6 +82,7 @@ class ReadingViewController: UIViewController {
     private func update(downloadedImages images: [Data]) {
         self.images = images.compactMap(UIImage.init)
         readingView.imageCollectionView.reloadData()
+        readingView.backgroundImage = self.images?.first
     }
     
 }

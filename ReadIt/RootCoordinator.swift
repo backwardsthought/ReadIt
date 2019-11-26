@@ -28,12 +28,12 @@ class RootCoordinator: Coordinator {
 
 		let navigationController = RootNavigationController()
         navigationController.navigationBar.titleTextAttributes = [
-			.font: UIFont(name: "Palatino", size: 20)!,
+			.font: UIFont(name: "Palatino", size: 24)!,
 			.foregroundColor: UIColor.white
 		]
 		navigationController.navigationBar.isTranslucent = false
-		navigationController.navigationBar.barTintColor = .cyan //UIColor(white: 0.1, alpha: 1)
-		navigationController.navigationBar.tintColor = .black //UIColor(white: 0.9, alpha: 1)
+		navigationController.navigationBar.barTintColor = .black
+		navigationController.navigationBar.tintColor = .white
 
 		self.navigationController = navigationController
         

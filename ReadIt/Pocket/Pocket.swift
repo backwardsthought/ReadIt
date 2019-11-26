@@ -26,7 +26,7 @@ struct Pocket: Decodable {
     
     private let time_updated: String
     
-    var dateAdded: TimeInterval {
+    var timeAdded: TimeInterval {
         return TimeInterval(exactly: Double(time_updated)!)!
     }
 

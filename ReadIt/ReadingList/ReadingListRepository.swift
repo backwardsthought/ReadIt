@@ -32,7 +32,7 @@ class ReadingListRepository {
 			return []
 		}
 
-		return try list.map { key, value -> Reading in
+		return try list.map { key, value -> Pocket in
             var dictionary = value as! [String: Any]
             
             if let imagesNode = dictionary["images"] as? [String: Any] {
@@ -47,9 +47,11 @@ class ReadingListRepository {
 			let data = try JSONSerialization.data(withJSONObject: dictionary, options: [])
 
 			let pocket = try decoder.decode(Pocket.self, from: data)
-            
-            return Reading(pocket: pocket)
-		}
+
+			return pocket
+		}.sorted { first, second in
+			return first.timeAdded > second.timeAdded
+		}.map(Reading.init)
 	}
 
     private func convertToArray(node: [String: Any]) -> [Any] {
@@ -66,7 +68,7 @@ private extension Reading {
         self.init(
             title: pocket.title,
             source: pocket.url,
-            dateAdded: Date(timeIntervalSince1970: pocket.dateAdded),
+            dateAdded: Date(timeIntervalSince1970: pocket.timeAdded),
             excerpt: pocket.excerpt,
             images: pocket.images?.map(Reading.Image.init),
             author: pocket.authors?.first?.name
