@@ -10,6 +10,12 @@ import UIKit
 import RxCocoa
 import RxSwift
 
+protocol ReadingNavigationDelegate: class {
+
+    func present(content: URL, fromContext: Presentable)
+
+}
+
 class ReadingViewController: UIViewController {
     
     let useCase: ReadingUseCase
@@ -19,11 +25,13 @@ class ReadingViewController: UIViewController {
         return view as! ReadingView
     }
 
+    weak var navigationDelegate: ReadingNavigationDelegate?
+
     private let closeButton: UIButton = {
         let closeButton = UIButton()
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         closeButton.setImage(UIImage(named: "CloseIcon"), for: .normal)
-        closeButton.addTarget(self, action: #selector(didTouchCloseButton(sender:)), for: .touchUpInside)
+        closeButton.addTarget(self, action: #selector(didTouchClose(sender:)), for: .touchUpInside)
         closeButton.layer.shadowColor = UIColor.black.cgColor
         closeButton.layer.shadowOffset = CGSize(width: 2, height: 2)
         closeButton.layer.shadowRadius = 3
@@ -52,6 +60,8 @@ class ReadingViewController: UIViewController {
         readingView.imageCollectionView.register(ReadingImageViewCell.self, forCellWithReuseIdentifier: .genericIdentifier)
         readingView.imageCollectionView.dataSource = self
         readingView.imageCollectionView.delegate = self
+
+        readingView.readItButton.addTarget(self, action: #selector(didTouchReadIt(sender:)), for: .touchUpInside)
         
         view = readingView
 
@@ -119,11 +129,18 @@ class ReadingViewController: UIViewController {
         readingView.backgroundImage = self.images?.first
     }
     
-    // MARK: Close
+    // MARK: Actions
     
     @objc
-    private func didTouchCloseButton(sender: UIButton) {
+    private func didTouchClose(sender: UIButton) {
         navigationController?.popViewController(animated: true)
+    }
+
+    @objc
+    private func didTouchReadIt(sender: UIButton) {
+        if let content = URL(string: viewModel.reading.value!.source) {
+            navigationDelegate?.present(content: content, fromContext: self)
+        }
     }
 }
 

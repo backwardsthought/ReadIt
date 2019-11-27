@@ -32,7 +32,6 @@ class ReadingView: UIView {
             if backgroundImageView.image == nil {
                 backgroundImageView.image = backgroundImage
                 UIView.animate(withDuration: 40, delay: 0, options: .curveEaseOut, animations: {
-//                    self.backgroundImageView.transform = CGAffineTransform(translationX: 0, y: -1.5)
                     self.backgroundImageView.transform = CGAffineTransform(scaleX: 1.33, y: 1.33)
                 }, completion: nil)
             }

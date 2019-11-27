@@ -10,10 +10,12 @@
 		1E90E1708B74A68637F3F47C /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EFBB27CC31246EE8AC82 /* NSLayoutConstraint+Extensions.swift */; };
 		1E90E19063B611B041C4C20C /* ReadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EE4A06AF92D296C6A288 /* ReadingCell.swift */; };
 		1E90E337083E32ED4028B70C /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E480D725258213EEEA03 /* RootCoordinator.swift */; };
+		1E90E34559BB56404FFC8D54 /* UIViewController+Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E49B6C2A451D27223812 /* UIViewController+Presentable.swift */; };
 		1E90E42C4FD6010F29BA5403 /* ReadingListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E6AD99F54E51D580AEA0 /* ReadingListModel.swift */; };
 		1E90E4680AB20FF207AD4A5C /* Pocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EF1034BEAF105E8DA0A4 /* Pocket.swift */; };
 		1E90E489953BEC3684377A1B /* PocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E4D3A972B62CDE9CD82B /* PocketService.swift */; };
 		1E90E4D87B607F5AF19745F2 /* ReadingListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E2119D0799A52A980644 /* ReadingListRepository.swift */; };
+		1E90E75FCF766E5E1C271A63 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EDAEBF2343B5C078EAE8 /* Presentable.swift */; };
 		1E90E7F3C73885D571588F78 /* Pocket+Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EABD8FBB436105BDDE6E /* Pocket+Credentials.swift */; };
 		1E90EAE20AB3C94F8517FE3A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E671C9CE910F231AF810 /* Coordinator.swift */; };
 		1E90EC4BC60946097FECF89D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EF2839851A9A3A18A467 /* AppState.swift */; };
@@ -63,12 +65,14 @@
 		1E90E1DAE9F10AA9D7B5C92B /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
 		1E90E2119D0799A52A980644 /* ReadingListRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingListRepository.swift; sourceTree = "<group>"; };
 		1E90E480D725258213EEEA03 /* RootCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		1E90E49B6C2A451D27223812 /* UIViewController+Presentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Presentable.swift"; sourceTree = "<group>"; };
 		1E90E4D3A972B62CDE9CD82B /* PocketService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PocketService.swift; sourceTree = "<group>"; };
 		1E90E4EF8F9283E07A71EC18 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
 		1E90E671C9CE910F231AF810 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		1E90E6AD99F54E51D580AEA0 /* ReadingListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingListModel.swift; sourceTree = "<group>"; };
 		1E90E94B3D6E0C75B44A8110 /* PocketClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PocketClient.swift; sourceTree = "<group>"; };
 		1E90EABD8FBB436105BDDE6E /* Pocket+Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pocket+Credentials.swift"; sourceTree = "<group>"; };
+		1E90EDAEBF2343B5C078EAE8 /* Presentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
 		1E90EE4A06AF92D296C6A288 /* ReadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingCell.swift; sourceTree = "<group>"; };
 		1E90EF1034BEAF105E8DA0A4 /* Pocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pocket.swift; sourceTree = "<group>"; };
 		1E90EF2839851A9A3A18A467 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
@@ -194,6 +198,8 @@
 				1E90E4EF8F9283E07A71EC18 /* UIView+Constraints.swift */,
 				1E90EFBB27CC31246EE8AC82 /* NSLayoutConstraint+Extensions.swift */,
 				1E90EF2839851A9A3A18A467 /* AppState.swift */,
+				1E90E49B6C2A451D27223812 /* UIViewController+Presentable.swift */,
+				1E90EDAEBF2343B5C078EAE8 /* Presentable.swift */,
 			);
 			path = ReadIt;
 			sourceTree = "<group>";
@@ -443,6 +449,8 @@
 				1E90E7F3C73885D571588F78 /* Pocket+Credentials.swift in Sources */,
 				1E90EF54DA4E662232BAE3F7 /* Pocket+OAuth.swift in Sources */,
 				277E04DC2313A59B00702A71 /* ReadingListRouter.swift in Sources */,
+				1E90E34559BB56404FFC8D54 /* UIViewController+Presentable.swift in Sources */,
+				1E90E75FCF766E5E1C271A63 /* Presentable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

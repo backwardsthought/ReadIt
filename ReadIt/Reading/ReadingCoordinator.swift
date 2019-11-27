@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class ReadingCoordinator {
     
@@ -28,8 +29,22 @@ class ReadingCoordinator {
         let viewModel = ReadingViewModel()
         let model = ReadingModel(repository: repository, presentation: viewModel)
         let view = ReadingViewController(useCase: model, viewModel: viewModel)
+
+        view.navigationDelegate = self
         
         return view
     }
     
+}
+
+extension ReadingCoordinator: ReadingNavigationDelegate {
+
+    func present(content: URL, fromContext context: Presentable) {
+        let safariViewController = SFSafariViewController(url: content, entersReaderIfAvailable: true)
+        safariViewController.modalPresentationStyle = .overCurrentContext
+        safariViewController.modalTransitionStyle = .coverVertical
+
+        context.present(view: safariViewController, animated: true)
+    }
+
 }
