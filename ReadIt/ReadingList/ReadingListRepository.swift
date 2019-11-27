@@ -70,7 +70,7 @@ private extension Reading {
             source: pocket.url,
             dateAdded: Date(timeIntervalSince1970: pocket.timeAdded),
             excerpt: pocket.excerpt,
-            images: pocket.images?.map(Reading.Image.init),
+            images: pocket.images?.filter { ($0.src as? NSString)?.pathExtension != "svg" }.map(Reading.Image.init),
             author: pocket.authors?.first?.name
         )
     }

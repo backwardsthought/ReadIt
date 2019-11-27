@@ -18,7 +18,20 @@ class ReadingViewController: UIViewController {
     var readingView: ReadingView {
         return view as! ReadingView
     }
-    
+
+    private let closeButton: UIButton = {
+        let closeButton = UIButton()
+        closeButton.translatesAutoresizingMaskIntoConstraints = false
+        closeButton.setImage(UIImage(named: "CloseIcon"), for: .normal)
+        closeButton.addTarget(self, action: #selector(didTouchCloseButton(sender:)), for: .touchUpInside)
+        closeButton.layer.shadowColor = UIColor.black.cgColor
+        closeButton.layer.shadowOffset = CGSize(width: 2, height: 2)
+        closeButton.layer.shadowRadius = 3
+        closeButton.layer.shadowOpacity = 0.2
+        
+        return closeButton
+    }()
+
     private let disposeBag = DisposeBag()
     private var images: [UIImage]? = nil
     
@@ -41,10 +54,19 @@ class ReadingViewController: UIViewController {
         readingView.imageCollectionView.delegate = self
         
         view = readingView
+
+        view.addSubview(closeButton)
+        view.addConstraint(.equal(from: closeButton, to: view, attr: .leadingMargin))
+        view.safeAreaLayoutGuide
+            .topAnchor.anchorWithOffset(to: closeButton.topAnchor)
+            .constraint(equalToConstant: 8)
+            .isActive = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        edgesForExtendedLayout = .all
         
         viewModel.reading
             .subscribe(onNext: { [weak self] reading in
@@ -60,7 +82,19 @@ class ReadingViewController: UIViewController {
         
         useCase.loadContent()
     }
-    
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        navigationController?.isNavigationBarHidden = true
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        navigationController?.isNavigationBarHidden = false
+    }
+
     // MARK: Updating
     
     private func update(reading: Reading) {
@@ -85,6 +119,12 @@ class ReadingViewController: UIViewController {
         readingView.backgroundImage = self.images?.first
     }
     
+    // MARK: Close
+    
+    @objc
+    private func didTouchCloseButton(sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
 }
 
 extension ReadingViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {

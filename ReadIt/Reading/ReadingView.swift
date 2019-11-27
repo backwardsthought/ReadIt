@@ -29,15 +29,18 @@ class ReadingView: UIView {
 
     var backgroundImage: UIImage? {
         didSet {
-            backgroundImageView.image = backgroundImage
-            UIView.animate(withDuration: 25) {
-                self.backgroundImageView.transform = CGAffineTransform(translationX: 0, y: -1.5)
-                self.backgroundImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+            if backgroundImageView.image == nil {
+                backgroundImageView.image = backgroundImage
+                UIView.animate(withDuration: 40, delay: 0, options: .curveEaseOut, animations: {
+//                    self.backgroundImageView.transform = CGAffineTransform(translationX: 0, y: -1.5)
+                    self.backgroundImageView.transform = CGAffineTransform(scaleX: 1.33, y: 1.33)
+                }, completion: nil)
             }
         }
     }
 
     private let backgroundImageView: UIImageView
+	private let gradientMaskView: UIView
     private let gradientLayer: CAGradientLayer
     
     init() {
@@ -45,6 +48,10 @@ class ReadingView: UIView {
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         backgroundImageView.contentMode = .scaleAspectFill
         backgroundImageView.clipsToBounds = true
+	    backgroundImageView.backgroundColor = .systemGray3
+
+	    gradientMaskView = UIView()
+	    gradientMaskView.translatesAutoresizingMaskIntoConstraints = false
 
         headerView = UIView()
         headerView.translatesAutoresizingMaskIntoConstraints = false
@@ -58,8 +65,9 @@ class ReadingView: UIView {
         detailLabel = UILabel()
         detailLabel.translatesAutoresizingMaskIntoConstraints = false
         detailLabel.text = "Detail"
-        detailLabel.font = UIFont(name: "Palatino", size: 22.0)
-        detailLabel.numberOfLines = 8
+	    detailLabel.textColor = UIColor.label.withAlphaComponent(0.95)
+        detailLabel.font = UIFont(name: "Palatino", size: 20.0)
+        detailLabel.numberOfLines = 6
         
         authorLabel = UILabel()
         authorLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -103,21 +111,22 @@ class ReadingView: UIView {
         laterButton.setTitle("Later", for: .normal)
 
         let clear = UIColor.clear.cgColor
-        let systemColor = UIColor.systemBackground.cgColor
+        let systemColor1 = UIColor.systemBackground.cgColor
+        let systemColor2 = UIColor.systemBackground.withAlphaComponent(0.75).cgColor
         
         gradientLayer = CAGradientLayer()
-        gradientLayer.colors = [systemColor, systemColor, clear, clear]
-        gradientLayer.locations = [0, 0.33, 0.66, 1]
+        gradientLayer.colors = [systemColor2, systemColor1, systemColor1, clear, clear]
+        gradientLayer.locations = [0, 0.15, 0.66, 0.9, 1]
         
         super.init(frame: .zero)
-
-        backgroundImageView.backgroundColor = .systemGray3
-        backgroundImageView.layer.mask = gradientLayer
 
         backgroundColor = .systemBackground
         clipsToBounds = true
 
-        addSubview(backgroundImageView)
+	    gradientMaskView.layer.mask = gradientLayer
+
+	    addSubview(gradientMaskView)
+		gradientMaskView.addSubview(backgroundImageView)
 
         addSubview(headerView)
         headerView.addSubview(authorLabel)
@@ -142,12 +151,14 @@ class ReadingView: UIView {
     }
     
     override func layoutSubviews() {
-        addConstraints([
-            .equal(from: backgroundImageView, to: self, attr: .top),
-            .equal(from: backgroundImageView, to: self, attr: .leading),
-            .create(from: self, .centerY, to: backgroundImageView, .bottom),
-            .equal(from: self, to: backgroundImageView, attr: .trailing)
-        ])
+	    addConstraints([
+		    .equal(from: gradientMaskView, to: self, attr: .top),
+		    .equal(from: gradientMaskView, to: self, attr: .leading),
+            .create(from: self, .centerY, to: gradientMaskView, .bottom),
+		    .equal(from: self, to: gradientMaskView, attr: .trailing),
+	    ])
+
+	    gradientMaskView.addConstraintsForAllEdges(of: backgroundImageView)
 
         headerView.addConstraints([
             .equal(from: authorLabel, to: headerView, attr: .top),
@@ -167,9 +178,9 @@ class ReadingView: UIView {
             .create(from: titleLabel, .top, to: headerView, .bottom, constant: 16),
             .equal(from: titleLabel, to: self, attr: .leadingMargin),
             .equal(from: self, to: titleLabel, attr: .trailingMargin),
-            .create(from: detailLabel, .top, to: titleLabel, .bottom, constant: 16),
-            .equal(from: detailLabel, to: self, attr: .leadingMargin, constant: 4),
-            .equal(from: self, to: detailLabel, attr: .trailingMargin, constant: 4),
+            .create(from: detailLabel, .top, to: titleLabel, .bottom, constant: 8),
+            .equal(from: detailLabel, to: self, attr: .leadingMargin, constant: 2),
+            .equal(from: self, to: detailLabel, attr: .trailingMargin, constant: 2),
             .create(from: imageContainer, .top, to: detailLabel, .bottom, constant: 16),
             .equal(from: imageContainer, to: self, attr: .leading),
             .equal(from: self, to: imageContainer, attr: .trailing),
@@ -199,7 +210,7 @@ class ReadingView: UIView {
     override func layoutSublayers(of layer: CALayer) {
         super.layoutSublayers(of: layer)
         
-        gradientLayer.frame = backgroundImageView.bounds
+        gradientLayer.frame = gradientMaskView.bounds
     }
     
 }

@@ -32,8 +32,9 @@ class RootCoordinator: Coordinator {
 			.foregroundColor: UIColor.white
 		]
 		navigationController.navigationBar.isTranslucent = false
-		navigationController.navigationBar.barTintColor = .black
+;		navigationController.navigationBar.barTintColor = .black
 		navigationController.navigationBar.tintColor = .white
+//		navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
 
 		self.navigationController = navigationController
         
