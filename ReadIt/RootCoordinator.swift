@@ -29,11 +29,11 @@ class RootCoordinator: Coordinator {
 		let navigationController = RootNavigationController()
         navigationController.navigationBar.titleTextAttributes = [
 			.font: UIFont(name: "Palatino", size: 24)!,
-			.foregroundColor: UIColor.invertedColors
+			.foregroundColor: UIColor.systemFill
 		]
 		navigationController.navigationBar.isTranslucent = false
-;		navigationController.navigationBar.barTintColor = .dynamicSystem
-		navigationController.navigationBar.tintColor = .invertedColors
+;		navigationController.navigationBar.barTintColor = .systemBackground
+		navigationController.navigationBar.tintColor = .systemFill
 //		navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
 
 		self.navigationController = navigationController
