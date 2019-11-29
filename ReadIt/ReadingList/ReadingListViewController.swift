@@ -50,11 +50,10 @@ class ReadingListViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		view.backgroundColor = .white
-
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.dataSource = self
 		tableView.delegate = self
+		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.register(ReadingCell.self, forCellReuseIdentifier: .genericIdentifier)
 
 		view.addSubview(tableView)
@@ -78,7 +77,7 @@ class ReadingListViewController: UIViewController {
 	}
 
 	override var preferredStatusBarStyle: UIStatusBarStyle {
-		return .lightContent
+		return .applyDarkContentIfNeeded(self)
 	}
     
 }
@@ -90,24 +89,27 @@ extension ReadingListViewController: UITableViewDataSource, UITableViewDelegate 
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: .genericIdentifier, for: indexPath)
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: .genericIdentifier, for: indexPath) as? ReadingCell else { return UITableViewCell() }
 
 		let reading = readingsList[indexPath.row]
 
-		cell.textLabel?.text = reading.title
-		cell.detailTextLabel?.text = reading.source
+		cell.configure(reading)
 
 		return cell
 	}
 
 	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
-        
-        let reading = readingsList[indexPath.row]
-        
-        navigationDelegate?.navigate(to: reading)
-        
-        print("Did select row at \(indexPath.row); title: \(reading.title)")
+
+		let reading = readingsList[indexPath.row]
+
+		navigationDelegate?.navigate(to: reading)
+
+		print("Did select row at \(indexPath.row); title: \(reading.title)")
+	}
+
+	public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 96
 	}
 
 }
