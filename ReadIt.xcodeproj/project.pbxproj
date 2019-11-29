@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1548A114239098EA0040FD99 /* StatusBarStyle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1548A113239098EA0040FD99 /* StatusBarStyle+Extensions.swift */; };
+		1548A118239099550040FD99 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1548A117239099550040FD99 /* UIColor+Extensions.swift */; };
+		1548A11A239099B10040FD99 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1548A119239099B10040FD99 /* UIImageView+Extensions.swift */; };
 		1E90E1708B74A68637F3F47C /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EFBB27CC31246EE8AC82 /* NSLayoutConstraint+Extensions.swift */; };
 		1E90E19063B611B041C4C20C /* ReadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EE4A06AF92D296C6A288 /* ReadingCell.swift */; };
 		1E90E337083E32ED4028B70C /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E480D725258213EEEA03 /* RootCoordinator.swift */; };
@@ -60,6 +63,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1548A113239098EA0040FD99 /* StatusBarStyle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StatusBarStyle+Extensions.swift"; sourceTree = "<group>"; };
+		1548A117239099550040FD99 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		1548A119239099B10040FD99 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		1DA8FD84B063256AF390080D /* Pods-ReadItTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadItTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadItTests/Pods-ReadItTests.debug.xcconfig"; sourceTree = "<group>"; };
 		1E90E02D93343B1DE08BFE04 /* ReadingListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingListViewModel.swift; sourceTree = "<group>"; };
 		1E90E1DAE9F10AA9D7B5C92B /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
@@ -133,6 +139,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1548A112239098CD0040FD99 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				277E04E52313B6B500702A71 /* UINavigationController+Navigable.swift */,
+				1E90E4EF8F9283E07A71EC18 /* UIView+Constraints.swift */,
+				1E90EFBB27CC31246EE8AC82 /* NSLayoutConstraint+Extensions.swift */,
+				1548A113239098EA0040FD99 /* StatusBarStyle+Extensions.swift */,
+				1548A117239099550040FD99 /* UIColor+Extensions.swift */,
+				1548A119239099B10040FD99 /* UIImageView+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		275C51DA230F893C00F9749A /* ReadingList */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,9 +213,7 @@
 				1E90E671C9CE910F231AF810 /* Coordinator.swift */,
 				277E04E12313AD5500702A71 /* Navigable.swift */,
 				277E04E32313AFFF00702A71 /* View.swift */,
-				277E04E52313B6B500702A71 /* UINavigationController+Navigable.swift */,
-				1E90E4EF8F9283E07A71EC18 /* UIView+Constraints.swift */,
-				1E90EFBB27CC31246EE8AC82 /* NSLayoutConstraint+Extensions.swift */,
+				1548A112239098CD0040FD99 /* Extensions */,
 				1E90EF2839851A9A3A18A467 /* AppState.swift */,
 				1E90E49B6C2A451D27223812 /* UIViewController+Presentable.swift */,
 				1E90EDAEBF2343B5C078EAE8 /* Presentable.swift */,
@@ -430,6 +447,7 @@
 				1E90EF650E2F226859E9DDC8 /* ReadingListViewModel.swift in Sources */,
 				277E04D32313867400702A71 /* ReadingViewController.swift in Sources */,
 				1E90EF482DE5323A00B867EB /* UIView+Constraints.swift in Sources */,
+				1548A118239099550040FD99 /* UIColor+Extensions.swift in Sources */,
 				27A5E560231490ED007FB8D2 /* ReadingRepository.swift in Sources */,
 				1E90E1708B74A68637F3F47C /* NSLayoutConstraint+Extensions.swift in Sources */,
 				1E90ED4673A756EEB9D7ECF3 /* Reading.swift in Sources */,
@@ -442,7 +460,9 @@
 				1E90E42C4FD6010F29BA5403 /* ReadingListModel.swift in Sources */,
 				277E04E02313A70900702A71 /* ReadingListCoordinator.swift in Sources */,
 				1E90EEDB5514BC1BB7953C2B /* PocketClient.swift in Sources */,
+				1548A11A239099B10040FD99 /* UIImageView+Extensions.swift in Sources */,
 				277E04DE2313A5B800702A71 /* ReadingRouter.swift in Sources */,
+				1548A114239098EA0040FD99 /* StatusBarStyle+Extensions.swift in Sources */,
 				277E04E22313AD5500702A71 /* Navigable.swift in Sources */,
 				1E90E4D87B607F5AF19745F2 /* ReadingListRepository.swift in Sources */,
 				27F3A12523276A5E00D8A173 /* ReadingImageViewCell.swift in Sources */,

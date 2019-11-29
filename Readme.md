@@ -8,4 +8,4 @@ The app for the 21st century reader
 
 ## Screenshots
 
-<img title="Redash" src='https://github.com/backwardsthought/ReadIt/blob/master/Screenshots/IMG_0249.PNG' width="350px"/>.  <img title="Redash" src='https://github.com/backwardsthought/ReadIt/blob/master/Screenshots/IMG_0248.PNG' width="350px"/>
+<img src='https://github.com/backwardsthought/ReadIt/blob/master/Screenshots/IMG_0249.PNG' width="280px"/> <img src='https://github.com/backwardsthought/ReadIt/blob/master/Screenshots/IMG_0254.PNG' width="280px"/> <img src='https://github.com/backwardsthought/ReadIt/blob/master/Screenshots/IMG_0255.PNG' width="280px"/>
