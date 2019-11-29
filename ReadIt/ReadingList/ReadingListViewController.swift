@@ -88,12 +88,11 @@ extension ReadingListViewController: UITableViewDataSource, UITableViewDelegate 
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: .genericIdentifier, for: indexPath)
+		guard let cell = tableView.dequeueReusableCell(withIdentifier: .genericIdentifier, for: indexPath) as? ReadingCell else { return UITableViewCell() }
 
 		let reading = readingsList[indexPath.row]
 
-		cell.textLabel?.text = reading.title
-		cell.detailTextLabel?.text = reading.source
+		cell.configure(reading)
 
 		return cell
 	}
