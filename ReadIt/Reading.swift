@@ -13,6 +13,7 @@ struct Reading {
     let excerpt: String
     let images: [Image]?
     let author: String?
+	let timeToRead: Int?
     
     struct Image {
         let src: String
