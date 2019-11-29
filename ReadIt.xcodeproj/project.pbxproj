@@ -129,6 +129,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1548A112239098CD0040FD99 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				277E04E52313B6B500702A71 /* UINavigationController+Navigable.swift */,
+				1E90E4EF8F9283E07A71EC18 /* UIView+Constraints.swift */,
+				1E90EFBB27CC31246EE8AC82 /* NSLayoutConstraint+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		275C51DA230F893C00F9749A /* ReadingList */ = {
 			isa = PBXGroup;
 			children = (
@@ -190,9 +200,7 @@
 				1E90E671C9CE910F231AF810 /* Coordinator.swift */,
 				277E04E12313AD5500702A71 /* Navigable.swift */,
 				277E04E32313AFFF00702A71 /* View.swift */,
-				277E04E52313B6B500702A71 /* UINavigationController+Navigable.swift */,
-				1E90E4EF8F9283E07A71EC18 /* UIView+Constraints.swift */,
-				1E90EFBB27CC31246EE8AC82 /* NSLayoutConstraint+Extensions.swift */,
+				1548A112239098CD0040FD99 /* Extensions */,
 				1E90EF2839851A9A3A18A467 /* AppState.swift */,
 			);
 			path = ReadIt;
