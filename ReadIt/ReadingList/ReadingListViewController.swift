@@ -53,6 +53,7 @@ class ReadingListViewController: UIViewController {
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.dataSource = self
 		tableView.delegate = self
+		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.register(ReadingCell.self, forCellReuseIdentifier: .genericIdentifier)
 
 		view.addSubview(tableView)
@@ -99,12 +100,16 @@ extension ReadingListViewController: UITableViewDataSource, UITableViewDelegate 
 
 	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
-        
-        let reading = readingsList[indexPath.row]
-        
-        navigationDelegate?.navigate(to: reading)
-        
-        print("Did select row at \(indexPath.row); title: \(reading.title)")
+
+		let reading = readingsList[indexPath.row]
+
+		navigationDelegate?.navigate(to: reading)
+
+		print("Did select row at \(indexPath.row); title: \(reading.title)")
+	}
+
+	public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+		return 96
 	}
 
 }
