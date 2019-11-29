@@ -8,4 +8,4 @@ The app for the 21st century reader
 
 ## Screenshots
 
-<img src='https://github.com/backwardsthought/ReadIt/blob/master/Screenshots/IMG_0249.PNG' width="280px"/> <img src='https://github.com/backwardsthought/ReadIt/blob/master/Screenshots/IMG_0254.PNG' width="280px"/> <img src='https://github.com/backwardsthought/ReadIt/blob/master/Screenshots/IMG_0255.PNG' width="280px"/>
+<img src='https://github.com/backwardsthought/ReadIt/blob/master/Screenshots/ReadingList.jpeg' width="280px"/> <img src='https://github.com/backwardsthought/ReadIt/blob/master/Screenshots/Reading_1.PNG' width="280px"/> <img src='https://github.com/backwardsthought/ReadIt/blob/master/Screenshots/Reading_2.PNG' width="280px"/>
