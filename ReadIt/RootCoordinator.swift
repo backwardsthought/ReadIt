@@ -11,7 +11,7 @@ import AuthenticationServices
 class RootNavigationController: UINavigationController {
 
 	override var preferredStatusBarStyle: UIStatusBarStyle {
-		return self.topViewController?.preferredStatusBarStyle ?? .default
+		return .applyDarkContentIfNeeded(self)
 	}
 
 }
@@ -29,11 +29,11 @@ class RootCoordinator: Coordinator {
 		let navigationController = RootNavigationController()
         navigationController.navigationBar.titleTextAttributes = [
 			.font: UIFont(name: "Palatino", size: 24)!,
-			.foregroundColor: UIColor.white
+			.foregroundColor: UIColor.invertedColors
 		]
 		navigationController.navigationBar.isTranslucent = false
-;		navigationController.navigationBar.barTintColor = .black
-		navigationController.navigationBar.tintColor = .white
+;		navigationController.navigationBar.barTintColor = .dynamicSystem
+		navigationController.navigationBar.tintColor = .invertedColors
 //		navigationController.navigationBar.setBackgroundImage(UIImage(), for: .default)
 
 		self.navigationController = navigationController

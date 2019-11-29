@@ -50,8 +50,6 @@ class ReadingListViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		view.backgroundColor = .white
-
 		tableView.translatesAutoresizingMaskIntoConstraints = false
 		tableView.dataSource = self
 		tableView.delegate = self
@@ -78,7 +76,7 @@ class ReadingListViewController: UIViewController {
 	}
 
 	override var preferredStatusBarStyle: UIStatusBarStyle {
-		return .lightContent
+		return .applyDarkContentIfNeeded(self)
 	}
     
 }
