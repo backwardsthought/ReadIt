@@ -3,38 +3,28 @@
 // Copyright (c) 2018 Copyisright. All rights reserved.
 //
 
-import RxCocoa
-import RxSwift
+import Combine
 
-protocol ReadingListViewModelType: class {
+protocol ReadingListPresentation: AnyObject {
 
-	var readingList: BehaviorRelay<[Reading]> { get }
+    func onLoading(readingsList: AnyPublisher<[Reading], Error>)
 
 }
 
-protocol ReadingListPresentation: class {
-    
-    func onLoading(readingList: Single<[Reading]>)
+class ReadingListViewModel {
+
+	@Published var readingsList: [Reading] = []
+
+	init() {}
     
 }
 
-class ReadingListViewModel: ReadingListViewModelType, ReadingListPresentation {
+extension ReadingListViewModel: ReadingListPresentation {
 
-	private var executionDisposable: Disposable? = nil
-
-	let readingList: BehaviorRelay<[Reading]>
-
-	deinit {
-		executionDisposable?.dispose()
+	func onLoading(readingsList: AnyPublisher<[Reading], Error>) {
+		readingsList
+			.replaceError(with: [])
+			.assign(to: &$readingsList)
 	}
 
-	init() {
-		readingList = BehaviorRelay(value: [])
-	}
-    
-    func onLoading(readingList: Single<[Reading]>) {
-        executionDisposable?.dispose()
-        executionDisposable = readingList.subscribe(onSuccess: self.readingList.accept)
-    }
-    
 }

@@ -6,61 +6,56 @@
 //  Copyright © 2019 Copyisright. All rights reserved.
 //
 
-import RxCocoa
-import RxSwift
+import Foundation
+import Combine
 
-protocol ReadingViewModelType: class {
+protocol ReadingPresentation: AnyObject {
     
-    var reading: BehaviorRelay<Reading?> { get }
+	func onLoading(reading: Just<Reading>)
     
-    var images: BehaviorRelay<[Data]> { get }
-    
-    var imagesCount: Int { get }
+    func onDownloading(images: AnyPublisher<Data, Error>, count: Int)
     
 }
 
-protocol ReadingPresentation: class {
-    
-    func onLoading(reading: Single<Reading>)
-    
-    func onDownloading(images: Observable<Data>, count: Int)
-    
-}
+class ReadingViewModel {
 
-class ReadingViewModel: ReadingViewModelType, ReadingPresentation {
+	@Published(initialValue: nil)
+	var reading: Reading?
     
-    private var executionDisposable: Disposable? = nil
-    private var downloadDisposable: Disposable? = nil
+	@Published(initialValue: [])
+	var images: [Data]
     
-    let reading: BehaviorRelay<Reading?>
-    
-    var imagesCount: Int
-    let images: BehaviorRelay<[Data]>
-    
+	var imagesCount: Int = 0
+
+    private var downloadCancellable: AnyCancellable? = nil
+
     deinit {
-        executionDisposable?.dispose()
+        downloadCancellable?.cancel()
+        downloadCancellable = nil
     }
+
+    init() {}
     
-    init() {
-        reading = BehaviorRelay(value: nil)
-        imagesCount = 0
-        images = BehaviorRelay(value: [])
+}
+
+extension ReadingViewModel: ReadingPresentation {
+
+    func onLoading(reading: Just<Reading>) {
+        reading
+			.map(Optional.init)
+            .assign(to: &$reading)
     }
-    
-    func onLoading(reading: Single<Reading>) {
-        executionDisposable?.dispose()
-        executionDisposable = reading.subscribe(onSuccess: self.reading.accept)
-    }
-    
-    func onDownloading(images: Observable<Data>, count: Int) {
+
+    func onDownloading(images: AnyPublisher<Data, Error>, count: Int) {
         imagesCount = count
-        downloadDisposable?.dispose()
-        downloadDisposable = images.subscribe { [weak self] event in
-            if case .next(let data) = event, var currentImages = self?.images.value {
-                currentImages.append(data)
-                self?.images.accept(currentImages)
+		downloadCancellable = images
+			.catch { error ->  Empty<Data, Never> in
+				print(error)
+				return Empty()
+			}
+            .sink { [weak self] data in
+                self?.images.append(data)
             }
-        }
     }
-    
+
 }

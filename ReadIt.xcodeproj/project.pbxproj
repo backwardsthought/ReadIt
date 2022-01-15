@@ -3,51 +3,62 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1548A114239098EA0040FD99 /* StatusBarStyle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1548A113239098EA0040FD99 /* StatusBarStyle+Extensions.swift */; };
 		1548A118239099550040FD99 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1548A117239099550040FD99 /* UIColor+Extensions.swift */; };
 		1548A11A239099B10040FD99 /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1548A119239099B10040FD99 /* UIImageView+Extensions.swift */; };
-		1E90E1708B74A68637F3F47C /* NSLayoutConstraint+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EFBB27CC31246EE8AC82 /* NSLayoutConstraint+Extensions.swift */; };
+		1E90E06EFEABA5CE7FD0C743 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E4A1BE6F2ABE60AD88F3 /* AppDelegate.swift */; };
+		1E90E179463A08702465AB78 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E169F9C0B0C2520DD893 /* View.swift */; };
 		1E90E19063B611B041C4C20C /* ReadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EE4A06AF92D296C6A288 /* ReadingCell.swift */; };
-		1E90E337083E32ED4028B70C /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E480D725258213EEEA03 /* RootCoordinator.swift */; };
-		1E90E34559BB56404FFC8D54 /* UIViewController+Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E49B6C2A451D27223812 /* UIViewController+Presentable.swift */; };
-		1E90E42C4FD6010F29BA5403 /* ReadingListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E6AD99F54E51D580AEA0 /* ReadingListModel.swift */; };
+		1E90E284DF08800A60083A06 /* Pocket+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E928C86E1E7DA68F8235 /* Pocket+Decodable.swift */; };
+		1E90E2F374DCA2F53EAE0357 /* Pocket+RequestResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EC01D72F39AD332E0534 /* Pocket+RequestResult.swift */; };
+		1E90E36D544DFAE25EF7E610 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EFB521E202C05BB840CD /* Service.swift */; };
+		1E90E40B1E0C5E3C9C830A90 /* Target.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E0926076247B9E2DB9E6 /* Target.swift */; };
+		1E90E429EAD55A347E122E99 /* ReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E43E690D8D7F67144141 /* ReusableView.swift */; };
+		1E90E42C4FD6010F29BA5403 /* ReadingListInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E6AD99F54E51D580AEA0 /* ReadingListInteractor.swift */; };
 		1E90E4680AB20FF207AD4A5C /* Pocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EF1034BEAF105E8DA0A4 /* Pocket.swift */; };
-		1E90E489953BEC3684377A1B /* PocketService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E4D3A972B62CDE9CD82B /* PocketService.swift */; };
+		1E90E489953BEC3684377A1B /* PocketTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E4D3A972B62CDE9CD82B /* PocketTarget.swift */; };
+		1E90E49A062A94C7732E47FF /* AppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E2012598D64CB5E44207 /* AppSession.swift */; };
+		1E90E49E0367B24E7533CDFB /* AuthenticationContextProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90ECB408B4C14343C51C44 /* AuthenticationContextProviding.swift */; };
 		1E90E4D87B607F5AF19745F2 /* ReadingListRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E2119D0799A52A980644 /* ReadingListRepository.swift */; };
-		1E90E75FCF766E5E1C271A63 /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EDAEBF2343B5C078EAE8 /* Presentable.swift */; };
+		1E90E50A4FB666C153E45D44 /* UIViewController+Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E54D9087794A6E690443 /* UIViewController+Presentable.swift */; };
+		1E90E77E8E9240CA040C38BF /* Navigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E656EFED1B1140374643 /* Navigable.swift */; };
 		1E90E7F3C73885D571588F78 /* Pocket+Credentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EABD8FBB436105BDDE6E /* Pocket+Credentials.swift */; };
-		1E90EAE20AB3C94F8517FE3A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E671C9CE910F231AF810 /* Coordinator.swift */; };
-		1E90EC4BC60946097FECF89D /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EF2839851A9A3A18A467 /* AppState.swift */; };
-		1E90ED4673A756EEB9D7ECF3 /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E1DAE9F10AA9D7B5C92B /* Reading.swift */; };
-		1E90EEDB5514BC1BB7953C2B /* PocketClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E94B3D6E0C75B44A8110 /* PocketClient.swift */; };
+		1E90E8FB92E5AC1EE068E564 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E6A2F5672327909974FA /* UICollectionView+Extensions.swift */; };
+		1E90E995C9E75799A5265597 /* RequestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EB737F2F680DE00014E7 /* RequestProvider.swift */; };
+		1E90EAEFB7C0C39A54EC1622 /* ReadingBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E398FD0D605DE237F187 /* ReadingBottomView.swift */; };
+		1E90EAFA457E2E5B9D3D0AE6 /* ReadingImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EF1B74F15583811092F7 /* ReadingImageViewCell.swift */; };
+		1E90EC173792DA1123E8D14A /* Presentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EB276CAA10D5C1776474 /* Presentable.swift */; };
+		1E90ECAB5DAFF7CEDC4A3F32 /* ReadingImagesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E3FB3809A0BBA77D7FA6 /* ReadingImagesView.swift */; };
+		1E90ED70601B9D7B8BCCC9E4 /* UserCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EC466E5832D011DC1042 /* UserCoordinator.swift */; };
+		1E90EDC3EF1009EB39ABFE33 /* NetworkSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E4ACF4F2AD5F4EA901C2 /* NetworkSession.swift */; };
+		1E90EE2E5C853B78900662D9 /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E46A50822AA0DAC39242 /* RootCoordinator.swift */; };
+		1E90EF0D07FE3EDE259E543C /* Reading.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E4BC9EFE9372A0FF474E /* Reading.swift */; };
 		1E90EF482DE5323A00B867EB /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E4EF8F9283E07A71EC18 /* UIView+Constraints.swift */; };
 		1E90EF54DA4E662232BAE3F7 /* Pocket+OAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EFB20E4794067AF86F88 /* Pocket+OAuth.swift */; };
 		1E90EF650E2F226859E9DDC8 /* ReadingListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E02D93343B1DE08BFE04 /* ReadingListViewModel.swift */; };
+		1E90EF85A5C202C19EB9EFBF /* Authorization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E00E021F8CAB5359BB97 /* Authorization.swift */; };
+		1E90EF97731067FB58989215 /* PocketRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90E7E0606BCADAFDA407C6 /* PocketRequest.swift */; };
+		1E90EFA9ADABCAA16516CD5F /* PocketAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E90EF1D8DA40EF964FE54C6 /* PocketAuthService.swift */; };
 		2756AE1B215DD7F40075136E /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2756AE19215DD72D0075136E /* SafariServices.framework */; };
 		2756AE1D215DE9850075136E /* AuthenticationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2756AE1C215DE9850075136E /* AuthenticationServices.framework */; };
 		2756AE1F215DE98F0075136E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2756AE1E215DE98F0075136E /* WebKit.framework */; };
-		2768D6A9212BAC9C000CACCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2768D6A8212BAC9C000CACCC /* AppDelegate.swift */; };
 		2768D6AB212BAC9C000CACCC /* ReadingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2768D6AA212BAC9C000CACCC /* ReadingListViewController.swift */; };
 		2768D6B0212BAC9D000CACCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2768D6AF212BAC9D000CACCC /* Assets.xcassets */; };
 		2768D6B3212BAC9D000CACCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2768D6B1212BAC9D000CACCC /* LaunchScreen.storyboard */; };
 		2768D6BE212BAC9E000CACCC /* ReadItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2768D6BD212BAC9E000CACCC /* ReadItTests.swift */; };
 		277E04D32313867400702A71 /* ReadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04D22313867400702A71 /* ReadingViewController.swift */; };
 		277E04D52313868C00702A71 /* ReadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04D42313868C00702A71 /* ReadingViewModel.swift */; };
-		277E04D72313869700702A71 /* ReadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04D62313869700702A71 /* ReadingModel.swift */; };
+		277E04D72313869700702A71 /* ReadingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04D62313869700702A71 /* ReadingInteractor.swift */; };
 		277E04DA2313880A00702A71 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04D92313880A00702A71 /* ReadingView.swift */; };
 		277E04DC2313A59B00702A71 /* ReadingListRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04DB2313A59B00702A71 /* ReadingListRouter.swift */; };
-		277E04DE2313A5B800702A71 /* ReadingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04DD2313A5B800702A71 /* ReadingRouter.swift */; };
 		277E04E02313A70900702A71 /* ReadingListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04DF2313A70900702A71 /* ReadingListCoordinator.swift */; };
-		277E04E22313AD5500702A71 /* Navigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04E12313AD5500702A71 /* Navigable.swift */; };
-		277E04E42313AFFF00702A71 /* View.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04E32313AFFF00702A71 /* View.swift */; };
 		277E04E62313B6B500702A71 /* UINavigationController+Navigable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277E04E52313B6B500702A71 /* UINavigationController+Navigable.swift */; };
 		27A5E55E23148C34007FB8D2 /* ReadingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5E55D23148C34007FB8D2 /* ReadingCoordinator.swift */; };
 		27A5E560231490ED007FB8D2 /* ReadingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A5E55F231490ED007FB8D2 /* ReadingRepository.swift */; };
-		27F3A12523276A5E00D8A173 /* ReadingImageViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F3A12423276A5E00D8A173 /* ReadingImageViewCell.swift */; };
 		D5AC15A75E7F196F3EDC1A97 /* Pods_ReadIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56A9A9143D52230A08A9CC32 /* Pods_ReadIt.framework */; };
 		E6755158BF1C6F4D8EE03136 /* Pods_ReadItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D67064E17CBA0E69AA5C117 /* Pods_ReadItTests.framework */; };
 /* End PBXBuildFile section */
@@ -67,28 +78,43 @@
 		1548A117239099550040FD99 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		1548A119239099B10040FD99 /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		1DA8FD84B063256AF390080D /* Pods-ReadItTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadItTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadItTests/Pods-ReadItTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1E90E00E021F8CAB5359BB97 /* Authorization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Authorization.swift; sourceTree = "<group>"; };
 		1E90E02D93343B1DE08BFE04 /* ReadingListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingListViewModel.swift; sourceTree = "<group>"; };
-		1E90E1DAE9F10AA9D7B5C92B /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
+		1E90E0926076247B9E2DB9E6 /* Target.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Target.swift; sourceTree = "<group>"; };
+		1E90E169F9C0B0C2520DD893 /* View.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
+		1E90E2012598D64CB5E44207 /* AppSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSession.swift; sourceTree = "<group>"; };
 		1E90E2119D0799A52A980644 /* ReadingListRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingListRepository.swift; sourceTree = "<group>"; };
-		1E90E480D725258213EEEA03 /* RootCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
-		1E90E49B6C2A451D27223812 /* UIViewController+Presentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Presentable.swift"; sourceTree = "<group>"; };
-		1E90E4D3A972B62CDE9CD82B /* PocketService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PocketService.swift; sourceTree = "<group>"; };
+		1E90E398FD0D605DE237F187 /* ReadingBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingBottomView.swift; sourceTree = "<group>"; };
+		1E90E3FB3809A0BBA77D7FA6 /* ReadingImagesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingImagesView.swift; sourceTree = "<group>"; };
+		1E90E43E690D8D7F67144141 /* ReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReusableView.swift; sourceTree = "<group>"; };
+		1E90E46A50822AA0DAC39242 /* RootCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		1E90E4A1BE6F2ABE60AD88F3 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1E90E4ACF4F2AD5F4EA901C2 /* NetworkSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkSession.swift; sourceTree = "<group>"; };
+		1E90E4BC9EFE9372A0FF474E /* Reading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reading.swift; sourceTree = "<group>"; };
+		1E90E4D3A972B62CDE9CD82B /* PocketTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PocketTarget.swift; sourceTree = "<group>"; };
 		1E90E4EF8F9283E07A71EC18 /* UIView+Constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
-		1E90E671C9CE910F231AF810 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		1E90E6AD99F54E51D580AEA0 /* ReadingListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingListModel.swift; sourceTree = "<group>"; };
-		1E90E94B3D6E0C75B44A8110 /* PocketClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PocketClient.swift; sourceTree = "<group>"; };
+		1E90E54D9087794A6E690443 /* UIViewController+Presentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Presentable.swift"; sourceTree = "<group>"; };
+		1E90E656EFED1B1140374643 /* Navigable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Navigable.swift; sourceTree = "<group>"; };
+		1E90E6A2F5672327909974FA /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		1E90E6AD99F54E51D580AEA0 /* ReadingListInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingListInteractor.swift; sourceTree = "<group>"; };
+		1E90E7E0606BCADAFDA407C6 /* PocketRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PocketRequest.swift; sourceTree = "<group>"; };
+		1E90E928C86E1E7DA68F8235 /* Pocket+Decodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pocket+Decodable.swift"; sourceTree = "<group>"; };
 		1E90EABD8FBB436105BDDE6E /* Pocket+Credentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pocket+Credentials.swift"; sourceTree = "<group>"; };
-		1E90EDAEBF2343B5C078EAE8 /* Presentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
+		1E90EB276CAA10D5C1776474 /* Presentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Presentable.swift; sourceTree = "<group>"; };
+		1E90EB737F2F680DE00014E7 /* RequestProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestProvider.swift; sourceTree = "<group>"; };
+		1E90EC01D72F39AD332E0534 /* Pocket+RequestResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pocket+RequestResult.swift"; sourceTree = "<group>"; };
+		1E90EC466E5832D011DC1042 /* UserCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserCoordinator.swift; sourceTree = "<group>"; };
+		1E90ECB408B4C14343C51C44 /* AuthenticationContextProviding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationContextProviding.swift; sourceTree = "<group>"; };
 		1E90EE4A06AF92D296C6A288 /* ReadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingCell.swift; sourceTree = "<group>"; };
 		1E90EF1034BEAF105E8DA0A4 /* Pocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pocket.swift; sourceTree = "<group>"; };
-		1E90EF2839851A9A3A18A467 /* AppState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		1E90EF1B74F15583811092F7 /* ReadingImageViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadingImageViewCell.swift; sourceTree = "<group>"; };
+		1E90EF1D8DA40EF964FE54C6 /* PocketAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PocketAuthService.swift; sourceTree = "<group>"; };
 		1E90EFB20E4794067AF86F88 /* Pocket+OAuth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Pocket+OAuth.swift"; sourceTree = "<group>"; };
-		1E90EFBB27CC31246EE8AC82 /* NSLayoutConstraint+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint+Extensions.swift"; sourceTree = "<group>"; };
+		1E90EFB521E202C05BB840CD /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		2756AE19215DD72D0075136E /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		2756AE1C215DE9850075136E /* AuthenticationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AuthenticationServices.framework; path = System/Library/Frameworks/AuthenticationServices.framework; sourceTree = SDKROOT; };
 		2756AE1E215DE98F0075136E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		2768D6A5212BAC9C000CACCC /* ReadIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2768D6A8212BAC9C000CACCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2768D6AA212BAC9C000CACCC /* ReadingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListViewController.swift; sourceTree = "<group>"; };
 		2768D6AF212BAC9D000CACCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2768D6B2212BAC9D000CACCC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -98,17 +124,13 @@
 		2768D6BF212BAC9E000CACCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		277E04D22313867400702A71 /* ReadingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingViewController.swift; sourceTree = "<group>"; };
 		277E04D42313868C00702A71 /* ReadingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingViewModel.swift; sourceTree = "<group>"; };
-		277E04D62313869700702A71 /* ReadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingModel.swift; sourceTree = "<group>"; };
+		277E04D62313869700702A71 /* ReadingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingInteractor.swift; sourceTree = "<group>"; };
 		277E04D92313880A00702A71 /* ReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingView.swift; sourceTree = "<group>"; };
 		277E04DB2313A59B00702A71 /* ReadingListRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListRouter.swift; sourceTree = "<group>"; };
-		277E04DD2313A5B800702A71 /* ReadingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingRouter.swift; sourceTree = "<group>"; };
 		277E04DF2313A70900702A71 /* ReadingListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingListCoordinator.swift; sourceTree = "<group>"; };
-		277E04E12313AD5500702A71 /* Navigable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigable.swift; sourceTree = "<group>"; };
-		277E04E32313AFFF00702A71 /* View.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = View.swift; sourceTree = "<group>"; };
 		277E04E52313B6B500702A71 /* UINavigationController+Navigable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Navigable.swift"; sourceTree = "<group>"; };
 		27A5E55D23148C34007FB8D2 /* ReadingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingCoordinator.swift; sourceTree = "<group>"; };
 		27A5E55F231490ED007FB8D2 /* ReadingRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingRepository.swift; sourceTree = "<group>"; };
-		27F3A12423276A5E00D8A173 /* ReadingImageViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingImageViewCell.swift; sourceTree = "<group>"; };
 		304097338FEDE853AFE7D89C /* Pods-ReadIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReadIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReadIt/Pods-ReadIt.debug.xcconfig"; sourceTree = "<group>"; };
 		3D67064E17CBA0E69AA5C117 /* Pods_ReadItTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadItTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		56A9A9143D52230A08A9CC32 /* Pods_ReadIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReadIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -144,18 +166,68 @@
 			children = (
 				277E04E52313B6B500702A71 /* UINavigationController+Navigable.swift */,
 				1E90E4EF8F9283E07A71EC18 /* UIView+Constraints.swift */,
-				1E90EFBB27CC31246EE8AC82 /* NSLayoutConstraint+Extensions.swift */,
 				1548A113239098EA0040FD99 /* StatusBarStyle+Extensions.swift */,
 				1548A117239099550040FD99 /* UIColor+Extensions.swift */,
 				1548A119239099B10040FD99 /* UIImageView+Extensions.swift */,
+				1E90E54D9087794A6E690443 /* UIViewController+Presentable.swift */,
+				1E90E6A2F5672327909974FA /* UICollectionView+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1E90E12CBF64F9CB1116E6AA /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1E90E4A1BE6F2ABE60AD88F3 /* AppDelegate.swift */,
+				1E90E2012598D64CB5E44207 /* AppSession.swift */,
+				1E90EFB521E202C05BB840CD /* Service.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1E90E30066BAA5DCB1ADD4DC /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				1E90E46A50822AA0DAC39242 /* RootCoordinator.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
+		1E90E782FF0582517D6E9C6C /* User */ = {
+			isa = PBXGroup;
+			children = (
+				1E90EC466E5832D011DC1042 /* UserCoordinator.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
+		1E90EB55B264F8542716CA4F /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1E90EB276CAA10D5C1776474 /* Presentable.swift */,
+				1E90E656EFED1B1140374643 /* Navigable.swift */,
+				1E90E169F9C0B0C2520DD893 /* View.swift */,
+				1E90E00E021F8CAB5359BB97 /* Authorization.swift */,
+				1E90ECB408B4C14343C51C44 /* AuthenticationContextProviding.swift */,
+				1E90E43E690D8D7F67144141 /* ReusableView.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		1E90EEE22B9707A19754629F /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				1E90E398FD0D605DE237F187 /* ReadingBottomView.swift */,
+				1E90EF1B74F15583811092F7 /* ReadingImageViewCell.swift */,
+				1E90E3FB3809A0BBA77D7FA6 /* ReadingImagesView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		275C51DA230F893C00F9749A /* ReadingList */ = {
 			isa = PBXGroup;
 			children = (
-				1E90E6AD99F54E51D580AEA0 /* ReadingListModel.swift */,
+				1E90E6AD99F54E51D580AEA0 /* ReadingListInteractor.swift */,
 				2768D6AA212BAC9C000CACCC /* ReadingListViewController.swift */,
 				1E90E02D93343B1DE08BFE04 /* ReadingListViewModel.swift */,
 				1E90E2119D0799A52A980644 /* ReadingListRepository.swift */,
@@ -170,10 +242,13 @@
 			isa = PBXGroup;
 			children = (
 				1E90EF1034BEAF105E8DA0A4 /* Pocket.swift */,
-				1E90E94B3D6E0C75B44A8110 /* PocketClient.swift */,
-				1E90E4D3A972B62CDE9CD82B /* PocketService.swift */,
+				1E90E4D3A972B62CDE9CD82B /* PocketTarget.swift */,
 				1E90EABD8FBB436105BDDE6E /* Pocket+Credentials.swift */,
 				1E90EFB20E4794067AF86F88 /* Pocket+OAuth.swift */,
+				1E90E928C86E1E7DA68F8235 /* Pocket+Decodable.swift */,
+				1E90EF1D8DA40EF964FE54C6 /* PocketAuthService.swift */,
+				1E90E7E0606BCADAFDA407C6 /* PocketRequest.swift */,
+				1E90EC01D72F39AD332E0534 /* Pocket+RequestResult.swift */,
 			);
 			path = Pocket;
 			sourceTree = "<group>";
@@ -201,22 +276,20 @@
 		2768D6A7212BAC9C000CACCC /* ReadIt */ = {
 			isa = PBXGroup;
 			children = (
-				2768D6A8212BAC9C000CACCC /* AppDelegate.swift */,
-				1E90E1DAE9F10AA9D7B5C92B /* Reading.swift */,
-				1E90E480D725258213EEEA03 /* RootCoordinator.swift */,
-				275C51DB230F895500F9749A /* Pocket */,
-				275C51DA230F893C00F9749A /* ReadingList */,
-				277E04D8231386A100702A71 /* Reading */,
+				2768D6B4212BAC9D000CACCC /* Info.plist */,
+				1E90E4ACF4F2AD5F4EA901C2 /* NetworkSession.swift */,
+				1E90EB737F2F680DE00014E7 /* RequestProvider.swift */,
+				1E90E0926076247B9E2DB9E6 /* Target.swift */,
 				2768D6AF212BAC9D000CACCC /* Assets.xcassets */,
 				2768D6B1212BAC9D000CACCC /* LaunchScreen.storyboard */,
-				2768D6B4212BAC9D000CACCC /* Info.plist */,
-				1E90E671C9CE910F231AF810 /* Coordinator.swift */,
-				277E04E12313AD5500702A71 /* Navigable.swift */,
-				277E04E32313AFFF00702A71 /* View.swift */,
+				1E90E12CBF64F9CB1116E6AA /* App */,
 				1548A112239098CD0040FD99 /* Extensions */,
-				1E90EF2839851A9A3A18A467 /* AppState.swift */,
-				1E90E49B6C2A451D27223812 /* UIViewController+Presentable.swift */,
-				1E90EDAEBF2343B5C078EAE8 /* Presentable.swift */,
+				275C51DB230F895500F9749A /* Pocket */,
+				1E90EB55B264F8542716CA4F /* Protocols */,
+				277E04D8231386A100702A71 /* Reading */,
+				275C51DA230F893C00F9749A /* ReadingList */,
+				1E90E30066BAA5DCB1ADD4DC /* Root */,
+				1E90E782FF0582517D6E9C6C /* User */,
 			);
 			path = ReadIt;
 			sourceTree = "<group>";
@@ -234,13 +307,13 @@
 			isa = PBXGroup;
 			children = (
 				277E04D92313880A00702A71 /* ReadingView.swift */,
-				27F3A12423276A5E00D8A173 /* ReadingImageViewCell.swift */,
 				277E04D22313867400702A71 /* ReadingViewController.swift */,
 				277E04D42313868C00702A71 /* ReadingViewModel.swift */,
-				277E04D62313869700702A71 /* ReadingModel.swift */,
+				277E04D62313869700702A71 /* ReadingInteractor.swift */,
 				27A5E55F231490ED007FB8D2 /* ReadingRepository.swift */,
-				277E04DD2313A5B800702A71 /* ReadingRouter.swift */,
 				27A5E55D23148C34007FB8D2 /* ReadingCoordinator.swift */,
+				1E90E4BC9EFE9372A0FF474E /* Reading.swift */,
+				1E90EEE22B9707A19754629F /* Views */,
 			);
 			path = Reading;
 			sourceTree = "<group>";
@@ -316,11 +389,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = Copyisright;
 				TargetAttributes = {
 					2768D6A4212BAC9C000CACCC = {
 						CreatedOnToolsVersion = 9.3;
+						LastSwiftMigration = 1250;
 					};
 					2768D6B8212BAC9E000CACCC = {
 						CreatedOnToolsVersion = 9.3;
@@ -390,21 +464,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ReadIt/Pods-ReadIt-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
-				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReadIt/Pods-ReadIt-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-ReadIt/Pods-ReadIt-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -436,41 +501,52 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				277E04E42313AFFF00702A71 /* View.swift in Sources */,
 				2768D6AB212BAC9C000CACCC /* ReadingListViewController.swift in Sources */,
 				277E04D52313868C00702A71 /* ReadingViewModel.swift in Sources */,
-				2768D6A9212BAC9C000CACCC /* AppDelegate.swift in Sources */,
-				1E90E337083E32ED4028B70C /* RootCoordinator.swift in Sources */,
-				277E04D72313869700702A71 /* ReadingModel.swift in Sources */,
+				277E04D72313869700702A71 /* ReadingInteractor.swift in Sources */,
 				277E04E62313B6B500702A71 /* UINavigationController+Navigable.swift in Sources */,
-				1E90EAE20AB3C94F8517FE3A /* Coordinator.swift in Sources */,
 				1E90EF650E2F226859E9DDC8 /* ReadingListViewModel.swift in Sources */,
 				277E04D32313867400702A71 /* ReadingViewController.swift in Sources */,
 				1E90EF482DE5323A00B867EB /* UIView+Constraints.swift in Sources */,
 				1548A118239099550040FD99 /* UIColor+Extensions.swift in Sources */,
 				27A5E560231490ED007FB8D2 /* ReadingRepository.swift in Sources */,
-				1E90E1708B74A68637F3F47C /* NSLayoutConstraint+Extensions.swift in Sources */,
-				1E90ED4673A756EEB9D7ECF3 /* Reading.swift in Sources */,
 				1E90E19063B611B041C4C20C /* ReadingCell.swift in Sources */,
 				277E04DA2313880A00702A71 /* ReadingView.swift in Sources */,
-				1E90EC4BC60946097FECF89D /* AppState.swift in Sources */,
-				1E90E489953BEC3684377A1B /* PocketService.swift in Sources */,
+				1E90E489953BEC3684377A1B /* PocketTarget.swift in Sources */,
 				27A5E55E23148C34007FB8D2 /* ReadingCoordinator.swift in Sources */,
 				1E90E4680AB20FF207AD4A5C /* Pocket.swift in Sources */,
-				1E90E42C4FD6010F29BA5403 /* ReadingListModel.swift in Sources */,
+				1E90E42C4FD6010F29BA5403 /* ReadingListInteractor.swift in Sources */,
 				277E04E02313A70900702A71 /* ReadingListCoordinator.swift in Sources */,
-				1E90EEDB5514BC1BB7953C2B /* PocketClient.swift in Sources */,
 				1548A11A239099B10040FD99 /* UIImageView+Extensions.swift in Sources */,
-				277E04DE2313A5B800702A71 /* ReadingRouter.swift in Sources */,
 				1548A114239098EA0040FD99 /* StatusBarStyle+Extensions.swift in Sources */,
-				277E04E22313AD5500702A71 /* Navigable.swift in Sources */,
 				1E90E4D87B607F5AF19745F2 /* ReadingListRepository.swift in Sources */,
-				27F3A12523276A5E00D8A173 /* ReadingImageViewCell.swift in Sources */,
 				1E90E7F3C73885D571588F78 /* Pocket+Credentials.swift in Sources */,
 				1E90EF54DA4E662232BAE3F7 /* Pocket+OAuth.swift in Sources */,
 				277E04DC2313A59B00702A71 /* ReadingListRouter.swift in Sources */,
-				1E90E34559BB56404FFC8D54 /* UIViewController+Presentable.swift in Sources */,
-				1E90E75FCF766E5E1C271A63 /* Presentable.swift in Sources */,
+				1E90E50A4FB666C153E45D44 /* UIViewController+Presentable.swift in Sources */,
+				1E90EF0D07FE3EDE259E543C /* Reading.swift in Sources */,
+				1E90EC173792DA1123E8D14A /* Presentable.swift in Sources */,
+				1E90E77E8E9240CA040C38BF /* Navigable.swift in Sources */,
+				1E90E179463A08702465AB78 /* View.swift in Sources */,
+				1E90E06EFEABA5CE7FD0C743 /* AppDelegate.swift in Sources */,
+				1E90E49A062A94C7732E47FF /* AppSession.swift in Sources */,
+				1E90EE2E5C853B78900662D9 /* RootCoordinator.swift in Sources */,
+				1E90E284DF08800A60083A06 /* Pocket+Decodable.swift in Sources */,
+				1E90E40B1E0C5E3C9C830A90 /* Target.swift in Sources */,
+				1E90E995C9E75799A5265597 /* RequestProvider.swift in Sources */,
+				1E90EFA9ADABCAA16516CD5F /* PocketAuthService.swift in Sources */,
+				1E90EDC3EF1009EB39ABFE33 /* NetworkSession.swift in Sources */,
+				1E90EF97731067FB58989215 /* PocketRequest.swift in Sources */,
+				1E90EF85A5C202C19EB9EFBF /* Authorization.swift in Sources */,
+				1E90E36D544DFAE25EF7E610 /* Service.swift in Sources */,
+				1E90ED70601B9D7B8BCCC9E4 /* UserCoordinator.swift in Sources */,
+				1E90E49E0367B24E7533CDFB /* AuthenticationContextProviding.swift in Sources */,
+				1E90E2F374DCA2F53EAE0357 /* Pocket+RequestResult.swift in Sources */,
+				1E90E8FB92E5AC1EE068E564 /* UICollectionView+Extensions.swift in Sources */,
+				1E90E429EAD55A347E122E99 /* ReusableView.swift in Sources */,
+				1E90EAEFB7C0C39A54EC1622 /* ReadingBottomView.swift in Sources */,
+				1E90EAFA457E2E5B9D3D0AE6 /* ReadingImageViewCell.swift in Sources */,
+				1E90ECAB5DAFF7CEDC4A3F32 /* ReadingImagesView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +606,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -555,7 +632,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -590,6 +667,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -609,7 +687,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -626,14 +704,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47LVS8UB5Q;
 				INFOPLIST_FILE = ReadIt/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lobo.ReadIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -646,14 +724,14 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 47LVS8UB5Q;
 				INFOPLIST_FILE = ReadIt/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lobo.ReadIt;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

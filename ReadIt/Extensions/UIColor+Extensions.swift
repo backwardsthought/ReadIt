@@ -1,17 +1,15 @@
+//
+//  UIColor+Extensions.swift
+//  ReadIt
+//
+//  Created by Felipe Lobo on 26/08/19.
+//  Copyright © 2019 Copyisright. All rights reserved.
+//
+
 import UIKit
 
 extension UIColor {
 
-	static var systemFill: UIColor = {
-		if #available(iOS 13.0, *) {
-			return UIColor { (trait: UITraitCollection) -> UIColor in
-				if trait.userInterfaceStyle == .light {
-					return .black
-				}
-				return .white
-			}
-		}
-		return .black
-	}()
+	static var systemFill: UIColor = UIColor(dynamicProvider: { $0.userInterfaceStyle == .light ? .black : .white })
 	
 }

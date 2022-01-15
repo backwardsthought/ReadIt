@@ -7,24 +7,34 @@ import UIKit
 
 extension UIView {
 
-	func addConstraintsForAllEdges(of item: UIView, insets: UIEdgeInsets = .zero) {
-		let constraints: [NSLayoutConstraint] = [
-			.equal(from: item, to: self, attr: .top, constant: insets.top),
-			.equal(from: item, to: self, attr: .left, constant: insets.left),
-			.equal(from: self, to: item, attr: .bottom, constant: insets.bottom),
-			.equal(from: self, to: item, attr: .right, constant: insets.right)
-		]
-
-		self.addConstraints(constraints)
+	func addConstraints(matchingEdgesOf view: UIView, margins: NSDirectionalEdgeInsets? = nil) {
+		if let margins = margins {
+			addConstraintsRelativeToMargin(matchingEdgesOf: view, margins: margins)
+		} else {
+			addConstraints([
+				view.topAnchor.constraint(equalTo: topAnchor),
+				view.leadingAnchor.constraint(equalTo: leadingAnchor),
+				bottomAnchor.constraint(equalTo: view.bottomAnchor),
+				trailingAnchor.constraint(equalTo: view.trailingAnchor)
+			])
+		}
 	}
 
-	func addConstraintsForPositionCenter(of item: UIView, sprain: CGPoint = .zero) {
-		let constraints: [NSLayoutConstraint] = [
-			.equal(from: item, to: self, attr: .centerX, constant: sprain.x),
-			.equal(from: item, to: self, attr: .centerY, constant: sprain.y)
-		]
+	private func addConstraintsRelativeToMargin(matchingEdgesOf view: UIView, margins: NSDirectionalEdgeInsets) {
+		directionalLayoutMargins = margins
+		addConstraints([
+			view.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor),
+			view.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor),
+			layoutMarginsGuide.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+			layoutMarginsGuide.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+		])
+	}
 
-		self.addConstraints(constraints)
+	func addConstraints(forPositionCenterOf view: UIView, sprain: CGPoint = .zero) {
+		addConstraints([
+			view.centerXAnchor.constraint(equalTo: centerXAnchor, constant: sprain.x),
+			view.centerYAnchor.constraint(equalTo: centerYAnchor, constant: sprain.y)
+		])
 	}
 
 }

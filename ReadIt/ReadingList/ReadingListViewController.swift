@@ -7,40 +7,38 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
-import AuthenticationServices
-
-protocol ReadingListNavigationDelegate: class {
-    
-    func navigate(to reading: Reading)
-    
-}
+import Combine
+import CombineCocoa
 
 class ReadingListViewController: UIViewController {
 
-	private let disposeBag = DisposeBag()
+	let useCase: ReadingListUseCase
+	let viewModel: ReadingListViewModel
+
+	weak var navigation: ReadingListNavigation?
+
+	private let tableView: UITableView = {
+		let tableView = UITableView(frame: .null, style: .plain)
+		tableView.translatesAutoresizingMaskIntoConstraints = false
+		tableView.rowHeight = UITableView.automaticDimension
+		tableView.estimatedRowHeight = 96
+		tableView.register(ReadingCell.self, forCellReuseIdentifier: .genericIdentifier)
+
+		return tableView
+	}()
 
 	private var isLoading = false
-    private let tableView: UITableView
-    
-    private var readingsList: [Reading] = []
-    private var isLogged: Bool = false
-    private var authSession: ASWebAuthenticationSession? = nil
+	private var isLogged: Bool = false
 
-    let useCase: ReadingListUseCase
-    let viewModel: ReadingListViewModelType
-    
-    weak var navigationDelegate: ReadingListNavigationDelegate?
+	private var cancellables = [AnyCancellable]()
 
-    init(useCase: ReadingListUseCase, viewModel: ReadingListViewModelType) {
+    init(useCase: ReadingListUseCase, viewModel: ReadingListViewModel) {
         self.useCase = useCase
 		self.viewModel = viewModel
-		self.tableView = UITableView(frame: .null, style: .plain)
 
 		super.init(nibName: nil, bundle: nil)
 
-		self.title = "Read It"
+		title = "Read It"
 	}
 
 	required init?(coder aDecoder: NSCoder) {
@@ -50,34 +48,45 @@ class ReadingListViewController: UIViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		tableView.translatesAutoresizingMaskIntoConstraints = false
-		tableView.dataSource = self
-		tableView.delegate = self
-		tableView.rowHeight = UITableViewAutomaticDimension
-		tableView.register(ReadingCell.self, forCellReuseIdentifier: .genericIdentifier)
+		setupSubviews()
+		setupLayout()
 
-		view.addSubview(tableView)
-		view.addConstraintsForAllEdges(of: tableView)
-
-		viewModel.readingList
-				.subscribe(onNext: { [weak self] readingsList in
-					self?.readingsList = readingsList
-					self?.tableView.reloadData()
-				})
-				.disposed(by: disposeBag)
-
-		let rightButtonItem = UIBarButtonItem(title: "Reload", style: .plain, target: nil, action: nil)
-		rightButtonItem.rx.tap.subscribe(onNext: { [weak self] _ in
-			self?.useCase.loadContent()
-		}).disposed(by: disposeBag)
-
-		navigationItem.rightBarButtonItem = rightButtonItem
+		viewModel.$readingsList
+			.sink { [tableView] readingsList in
+				DispatchQueue.main.async { tableView.reloadData() }
+			}
+			.store(in: &cancellables)
 
 		useCase.loadContent()
 	}
 
+	private func setupSubviews() {
+		tableView.dataSource = self
+		tableView.delegate = self
+
+		view.addSubview(tableView)
+
+		let rightButtonItem = UIBarButtonItem(title: "Reload", style: .plain, target: nil, action: nil)
+		rightButtonItem.tapPublisher
+			.sink { [useCase] in useCase.loadContent() }
+			.store(in: &cancellables)
+
+		navigationItem.rightBarButtonItem = rightButtonItem
+
+		let leftButtonItem = UIBarButtonItem(title: "User", style: .plain, target: nil, action: nil)
+		leftButtonItem.tapPublisher
+			.sink { [weak self] in self?.navigation?.forwardToUser() }
+			.store(in: &cancellables)
+
+		navigationItem.leftBarButtonItem = leftButtonItem
+	}
+
+	private func setupLayout() {
+		view.addConstraints(matchingEdgesOf: tableView)
+	}
+
 	override var preferredStatusBarStyle: UIStatusBarStyle {
-		return .applyDarkContentIfNeeded(self)
+		.applyDarkContentIfNeeded(self)
 	}
     
 }
@@ -85,31 +94,25 @@ class ReadingListViewController: UIViewController {
 extension ReadingListViewController: UITableViewDataSource, UITableViewDelegate {
 
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return readingsList.count
+		viewModel.readingsList.count
 	}
 
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		guard let cell = tableView.dequeueReusableCell(withIdentifier: .genericIdentifier, for: indexPath) as? ReadingCell else { return UITableViewCell() }
-
-		let reading = readingsList[indexPath.row]
-
+		let reading = viewModel.readingsList[indexPath.row]
+		let cell = tableView.dequeueReusableCell(withIdentifier: .genericIdentifier, for: indexPath) as! ReadingCell
 		cell.configure(reading)
 
 		return cell
 	}
 
-	public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
 
-		let reading = readingsList[indexPath.row]
+		let reading = viewModel.readingsList[indexPath.row]
 
-		navigationDelegate?.navigate(to: reading)
+		navigation?.forwardTo(reading: reading)
 
 		print("Did select row at \(indexPath.row); title: \(reading.title)")
-	}
-
-	public func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-		return 96
 	}
 
 }
@@ -117,7 +120,7 @@ extension ReadingListViewController: UITableViewDataSource, UITableViewDelegate 
 fileprivate extension String {
     
     static var genericIdentifier: String {
-        return "Generic Identifier"
+        "Generic Identifier"
     }
     
 }

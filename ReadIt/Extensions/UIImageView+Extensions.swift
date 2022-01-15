@@ -1,12 +1,18 @@
+//
+//  UIImageView+Extensions.swift
+//  ReadIt
+//
+//  Created by Felipe Lobo on 26/08/19.
+//  Copyright © 2019 Copyisright. All rights reserved.
+//
+
 import UIKit
 
 extension UIImageView {
 	
-	func imageFromURL(_ url: String?) {
-		guard let url = url, let imageURL = URL(string: url) else { return }
-		
+	func imageFromURL(_ imageUrl: URL) {
 		let cache = URLCache.shared
-		let request = URLRequest(url: imageURL)
+		let request = URLRequest(url: imageUrl)
 		
 		DispatchQueue.global(qos: .userInitiated).async { [weak self] in
 			if let data = cache.cachedResponse(for: request)?.data,
@@ -18,7 +24,7 @@ extension UIImageView {
 				return
 			}
 			
-			URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
+			URLSession.shared.dataTask(with: imageUrl) { (data, response, error) in
 				if let data = data, let response = response as? HTTPURLResponse,
 					let image = UIImage(data: data) {
 					let cachedData = CachedURLResponse(response: response, data: data)

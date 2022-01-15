@@ -3,7 +3,7 @@
 // Copyright (c) 2019 Copyisright. All rights reserved.
 //
 
-protocol Presentable: class {
+protocol Presentable: AnyObject {
 
 	func present(view: View, animated: Bool)
 

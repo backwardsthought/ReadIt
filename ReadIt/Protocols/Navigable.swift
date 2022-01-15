@@ -6,7 +6,7 @@
 //  Copyright © 2019 Copyisright. All rights reserved.
 //
 
-protocol Navigable: class {
+protocol Navigable: AnyObject {
     
     func navigateTo(view: View, animated: Bool)
     
