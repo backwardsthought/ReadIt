@@ -3,18 +3,20 @@
 // Copyright (c) 2018 Copyisright. All rights reserved.
 //
 
+import Foundation
+
 extension Pocket {
 
 	static var host: String {
-		return "https://getpocket.com"
+		"getpocket.com"
 	}
 
 	static var redirectUri: String {
-		return "pocketapp79730:authorizationFinished"
+		"pocketapp79730%3AauthorizationFinished"
 	}
 
 	static var consumerKey: String {
-		return "87395-6e4e1c684918c20703c9b867"
+		"87395-6e4e1c684918c20703c9b867"
 	}
 
 }

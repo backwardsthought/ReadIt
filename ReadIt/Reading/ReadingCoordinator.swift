@@ -11,36 +11,36 @@ import SafariServices
 
 class ReadingCoordinator {
     
-    private let reading: Reading
-    
-    weak private var navigable: Navigable?
-    
-    init(reading: Reading) {
+	private let session: AppSession
+	private let reading: Reading
+
+	init(session: AppSession, reading: Reading) {
+		self.session = session
         self.reading = reading
     }
     
     func start(navigable: Navigable) {
-        ReadingRouter().navigate(navigable: navigable, toReading: create())
+		navigable.navigateTo(view: makeView(), animated: true)
     }
-    
-    private func create() -> ReadingViewController {
-        let repository = ReadingRepository(reading: reading)
-        
-        let viewModel = ReadingViewModel()
-        let model = ReadingModel(repository: repository, presentation: viewModel)
-        let view = ReadingViewController(useCase: model, viewModel: viewModel)
 
+    private func makeView() -> ReadingViewController {
+		let repository = ReadingRepository(network: session.network, reading: reading)
+
+        let viewModel = ReadingViewModel()
+        let model = ReadingInteractor(repository: repository, presentation: viewModel)
+
+		let view = ReadingViewController(useCase: model, viewModel: viewModel)
         view.navigationDelegate = self
-        
+
         return view
     }
-    
+
 }
 
 extension ReadingCoordinator: ReadingNavigationDelegate {
 
     func present(content: URL, fromContext context: Presentable) {
-        let safariViewController = SFSafariViewController(url: content, entersReaderIfAvailable: true)
+        let safariViewController = SFSafariViewController(url: content)
         safariViewController.modalPresentationStyle = .overCurrentContext
         safariViewController.modalTransitionStyle = .coverVertical
 

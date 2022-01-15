@@ -51,7 +51,7 @@ class ReadingCell: UITableViewCell {
 
 	private var authorLabelConstraints: [NSLayoutConstraint] = []
 	
-	override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
 
 		setupViewConfiguration()
@@ -102,7 +102,7 @@ class ReadingCell: UITableViewCell {
 		estimatedTimeLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 6).isActive = true
 		estimatedTimeLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
 		estimatedTimeLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
-		estimatedTimeLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8)
+		estimatedTimeLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -8).isActive = true
 
 		let bottomBreakableConstraint = estimatedTimeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
 		bottomBreakableConstraint.priority = UILayoutPriority(200)
@@ -123,8 +123,9 @@ class ReadingCell: UITableViewCell {
 		titleLabel.text = reading.title
 		descriptionLabel.text = reading.excerpt
 
-		let pathURL = reading.images?.first?.src
-		banner.imageFromURL(pathURL)
+		if let pathURL = reading.cover?.src {
+			banner.imageFromURL(pathURL)
+		}
 		
 		if let timeToRead = reading.timeToRead {
 			estimatedTimeLabel.text = "\(timeToRead) min read"
@@ -138,8 +139,7 @@ class ReadingCell: UITableViewCell {
 		authorLabel.text = nil
 		estimatedTimeLabel.text = nil
 		banner.image = nil
-
-		layoutIfNeeded()
 	}
+
 }
 

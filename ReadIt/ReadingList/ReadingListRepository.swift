@@ -3,74 +3,59 @@
 // Copyright (c) 2018 Copyisright. All rights reserved.
 //
 
-import Moya
-import RxSwift
+import Foundation
+import Combine
 
 class ReadingListRepository {
 
-	private let client: PocketClient
-	private var provider: MoyaProvider<PocketService>?
+	private let pocketRequestCreateHandler: () -> PocketRequest?
 
-	init(client: PocketClient) {
-		self.client = client
+	init(pocketRequestCreateHandler: @escaping () -> PocketRequest?) {
+		self.pocketRequestCreateHandler = pocketRequestCreateHandler
 	}
 
-	func fetch() -> Single<[Reading]> {
-        let provider = client.create()
-        
-        self.provider = provider // Retains the provider because of reasons
-        
-        return provider.rx
-            .request(.get)
-            .map(serializePocket(response:))
-	}
-
-	private func serializePocket(response: Moya.Response) throws -> [Reading] {
-		let json = try response.mapJSON()
-
-		guard let list = (json as? NSDictionary)?.value(forKeyPath: "list") as? [String: Any?] else {
-			return []
+	func fetch() -> AnyPublisher<[Reading], Error> {
+        guard let pocketRequest = pocketRequestCreateHandler() else {
+			return Empty().eraseToAnyPublisher()
 		}
-
-		return try list.map { key, value -> Pocket in
-            var dictionary = value as! [String: Any]
-            
-            if let imagesNode = dictionary["images"] as? [String: Any] {
-                dictionary["images"] = convertToArray(node: imagesNode)
-            }
-            
-            if let authorsNode = dictionary["authors"] as? [String: Any] {
-                dictionary["authors"] = convertToArray(node: authorsNode)
-            }
-            
-			let decoder = JSONDecoder()
-			let data = try JSONSerialization.data(withJSONObject: dictionary, options: [])
-
-			let pocket = try decoder.decode(Pocket.self, from: data)
-
-			return pocket
-		}.sorted { first, second in
-			return first.timeAdded > second.timeAdded
-		}.map(Reading.init)
+        
+        return pocketRequest
+			.request(.get)
+			.map { pocketReadings in
+				pocketReadings
+					.sorted { a, b in (a.timeUpdated ?? 0) > (b.timeUpdated ?? 0) }
+					.map(Reading.init)
+			}
+			.receive(on: DispatchQueue.main)
+			.eraseToAnyPublisher()
 	}
-
-    private func convertToArray(node: [String: Any]) -> [Any] {
-        return node.reduce([Any]()) { seed, tuple -> [Any] in
-            return [tuple.value] + seed
-        }
-    }
 
 }
 
 private extension Reading {
 
     init(pocket: Pocket) {
+		let dateAdded: Date?
+		if let updatedTimestamp = pocket.timeUpdated {
+			dateAdded = Date(timeIntervalSince1970: updatedTimestamp)
+		} else {
+			dateAdded = nil
+		}
+
+		let cover: Image?
+		if let image = pocket.topImage {
+			cover = Image(pocket: image)
+		} else {
+			cover = nil
+		}
+
         self.init(
             title: pocket.title,
             source: pocket.url,
-            dateAdded: Date(timeIntervalSince1970: pocket.timeAdded),
+            dateAdded: dateAdded,
             excerpt: pocket.excerpt,
-            images: pocket.images?.filter { ($0.src as? NSString)?.pathExtension != "svg" }.map(Reading.Image.init),
+			cover: cover,
+            images: pocket.images?.filter { ($0.src as? NSString)?.pathExtension != "svg" }.map(Image.init),
             author: pocket.authors?.first?.name,
 			timeToRead: pocket.timeToRead
         )

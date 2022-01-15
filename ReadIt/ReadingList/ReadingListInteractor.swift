@@ -3,15 +3,13 @@
 // Copyright (c) 2018 Copyisright. All rights reserved.
 //
 
-import RxSwift
-
-protocol ReadingListUseCase: class {
+protocol ReadingListUseCase: AnyObject {
 
 	func loadContent()
 
 }
 
-class ReadingListModel: ReadingListUseCase {
+class ReadingListInteractor: ReadingListUseCase {
 
     weak var presentation: ReadingListPresentation?
 	let repository: ReadingListRepository
@@ -22,7 +20,7 @@ class ReadingListModel: ReadingListUseCase {
 	}
 
     func loadContent() {
-        presentation?.onLoading(readingList: repository.fetch())
+        presentation?.onLoading(readingsList: repository.fetch())
 	}
 
 }

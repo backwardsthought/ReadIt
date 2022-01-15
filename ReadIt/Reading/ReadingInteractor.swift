@@ -6,27 +6,31 @@
 //  Copyright © 2019 Copyisright. All rights reserved.
 //
 
-import RxSwift
+import Foundation
+import Combine
 
-protocol ReadingUseCase: class {
+protocol ReadingUseCase: AnyObject {
     
     func loadContent()
     
 }
 
-class ReadingModel: ReadingUseCase {
+class ReadingInteractor: ReadingUseCase {
     
-    weak var presentation: ReadingPresentation?
     let repository: ReadingRepository
-    
+    weak var presentation: ReadingPresentation?
+
     init(repository: ReadingRepository, presentation: ReadingPresentation) {
         self.repository = repository
         self.presentation = presentation
     }
     
     func loadContent() {
-        presentation?.onLoading(reading: repository.fetch())
-        presentation?.onDownloading(images: repository.downloadImages(), count: repository.imagesCount())
+		presentation?.onLoading(reading: repository.fetch())
+        presentation?.onDownloading(
+            images: repository.downloadImages(),
+            count: repository.imagesCount()
+        )
     }
     
 }

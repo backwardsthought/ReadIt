@@ -7,10 +7,9 @@
 //
 
 import UIKit
-import RxCocoa
-import RxSwift
+import Combine
 
-protocol ReadingNavigationDelegate: class {
+protocol ReadingNavigationDelegate: AnyObject {
 
     func present(content: URL, fromContext: Presentable)
 
@@ -19,19 +18,18 @@ protocol ReadingNavigationDelegate: class {
 class ReadingViewController: UIViewController {
     
     let useCase: ReadingUseCase
-    let viewModel: ReadingViewModelType
-    
-    var readingView: ReadingView {
-        return view as! ReadingView
-    }
+    let viewModel: ReadingViewModel
 
     weak var navigationDelegate: ReadingNavigationDelegate?
+
+    private var readingView: ReadingView { view as! ReadingView }
+
+    private var imagesCache: [UIImage] = []
 
     private let closeButton: UIButton = {
         let closeButton = UIButton()
         closeButton.translatesAutoresizingMaskIntoConstraints = false
         closeButton.setImage(UIImage(named: "CloseIcon"), for: .normal)
-        closeButton.addTarget(self, action: #selector(didTouchClose(sender:)), for: .touchUpInside)
         closeButton.layer.shadowColor = UIColor.black.cgColor
         closeButton.layer.shadowOffset = CGSize(width: 2, height: 2)
         closeButton.layer.shadowRadius = 3
@@ -40,10 +38,9 @@ class ReadingViewController: UIViewController {
         return closeButton
     }()
 
-    private let disposeBag = DisposeBag()
-    private var images: [UIImage]? = nil
-    
-    init(useCase: ReadingUseCase, viewModel: ReadingViewModelType) {
+    private var cancellables = [AnyCancellable]()
+
+    init(useCase: ReadingUseCase, viewModel: ReadingViewModel) {
         self.useCase = useCase
         self.viewModel = viewModel
         
@@ -56,40 +53,27 @@ class ReadingViewController: UIViewController {
     
     override func loadView() {
         let readingView = ReadingView()
-        
-        readingView.imageCollectionView.register(ReadingImageViewCell.self, forCellWithReuseIdentifier: .genericIdentifier)
-        readingView.imageCollectionView.dataSource = self
-        readingView.imageCollectionView.delegate = self
+        readingView.imagesView.dataSource = self
+        readingView.imagesView.delegate = self
 
-        readingView.readItButton.addTarget(self, action: #selector(didTouchReadIt(sender:)), for: .touchUpInside)
-        
         view = readingView
-
-        view.addSubview(closeButton)
-        view.addConstraint(.equal(from: closeButton, to: view, attr: .leadingMargin))
-        view.safeAreaLayoutGuide
-            .topAnchor.anchorWithOffset(to: closeButton.topAnchor)
-            .constraint(equalToConstant: 8)
-            .isActive = true
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        edgesForExtendedLayout = .all
+        setupActions()
+        setupLayout()
         
-        viewModel.reading
-            .subscribe(onNext: { [weak self] reading in
-                if let reading = reading {
-                    self?.update(reading: reading)
-                }
-            })
-            .disposed(by: disposeBag)
-        
-        viewModel.images
-            .subscribe(onNext: update(downloadedImages:))
-            .disposed(by: disposeBag)
-        
+		viewModel.$reading
+			.compactMap { $0 }
+            .sink { [weak self] reading in self?.update(reading: reading) }
+            .store(in: &cancellables)
+
+        viewModel.$images
+            .sink { [weak self] imagesData in self?.update(downloadedImages: imagesData) }
+            .store(in: &cancellables)
+
         useCase.loadContent()
     }
 
@@ -105,6 +89,34 @@ class ReadingViewController: UIViewController {
         navigationController?.isNavigationBarHidden = false
     }
 
+    // MARK: Setup
+
+    private func setupActions() {
+        closeButton.tapPublisher
+            .sink { [weak self] in self?.navigationController?.popViewController(animated: true) }
+            .store(in: &cancellables)
+
+        readingView.buttonsContainer.readItButton.tapPublisher
+            .sink { [unowned self, reading = viewModel.reading] in
+                if let url = reading?.source {
+                    navigationDelegate?.present(content: url, fromContext: self)
+                }
+            }
+            .store(in: &cancellables)
+    }
+
+    private func setupLayout() {
+        edgesForExtendedLayout = .all
+
+        view.addSubview(closeButton)
+        view.addConstraints([
+            closeButton.leadingAnchor.constraint(equalTo: view.layoutMarginsGuide.leadingAnchor),
+            view.safeAreaLayoutGuide.topAnchor
+                .anchorWithOffset(to: closeButton.topAnchor)
+                .constraint(equalToConstant: 8)
+        ])
+    }
+
     // MARK: Updating
     
     private func update(reading: Reading) {
@@ -112,66 +124,54 @@ class ReadingViewController: UIViewController {
         
         readingView.authorLabel.text = reading.author
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        
-        readingView.dateLabel.text = dateFormatter.string(from: reading.dateAdded)
+		if let date = reading.dateAdded {
+			let dateFormatter = DateFormatter()
+			dateFormatter.dateFormat = "dd/MM/yyyy"
+
+			readingView.dateLabel.text = dateFormatter.string(from: date)
+		}
         
         readingView.titleLabel.text = reading.title
         readingView.detailLabel.text = reading.excerpt
         
-        readingView.imageContainer.isHidden = reading.images == nil
+        readingView.imagesView.isHidden = reading.images == nil
     }
     
     private func update(downloadedImages images: [Data]) {
-        self.images = images.compactMap(UIImage.init)
-        readingView.imageCollectionView.reloadData()
-        readingView.backgroundImage = self.images?.first
-    }
-    
-    // MARK: Actions
-    
-    @objc
-    private func didTouchClose(sender: UIButton) {
-        navigationController?.popViewController(animated: true)
+        imagesCache = images.compactMap(UIImage.init)
+
+        readingView.imagesView.reloadData()
+        readingView.backgroundImage = imagesCache.first
     }
 
-    @objc
-    private func didTouchReadIt(sender: UIButton) {
-        if let content = URL(string: viewModel.reading.value!.source) {
-            navigationDelegate?.present(content: content, fromContext: self)
-        }
-    }
 }
 
-extension ReadingViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        let layoutMargins = readingView.layoutMargins
-        return UIEdgeInsets(top: 0, left: layoutMargins.left - 4, bottom: 0, right: layoutMargins.right - 4)
-    }
+extension ReadingViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.imagesCount
+        viewModel.imagesCount
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: .genericIdentifier, for: indexPath) as! ReadingImageViewCell
+        let cell: ReadingImageViewCell = collectionView.dequeueReusableCell(for: indexPath)
         
-        if let images = self.images, indexPath.item < images.count {
-            let image = images[indexPath.item]
+        if indexPath.item < imagesCache.count {
+            let image = imagesCache[indexPath.item]
             cell.imageView.image = image
         }
         
         return cell
     }
-    
+
 }
 
-fileprivate extension String {
-    
-    static var genericIdentifier: String {
-        return "Generic Identifier"
+extension ReadingViewController: UICollectionViewDelegateFlowLayout {
+
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        insetForSectionAt section: Int) -> UIEdgeInsets {
+        let layoutMargins = readingView.layoutMargins
+        return UIEdgeInsets(top: 0, left: layoutMargins.left - 4, bottom: 0, right: layoutMargins.right - 4)
     }
-    
+
 }

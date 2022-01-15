@@ -9,50 +9,61 @@
 import UIKit
 import AuthenticationServices
 
-class ReadingListCoordinator {
-    
-    let pocket: PocketClient
-    
-    private var readingCoordinator: ReadingCoordinator?
-    
-    weak private var navigable: Navigable?
-    
-    init(pocket: PocketClient) {
-        self.pocket = pocket
-        _ = pocket.login().subscribe() // FIXME
-    }
-    
-    func start(navigable: Navigable) {
-        self.navigable = navigable
-        ReadingListRouter().navigate(navigable: navigable, toReadingList: create())
-    }
-    
-    private func create() -> ReadingListViewController {
-        let repository = ReadingListRepository(client: pocket)
-        
-        let viewModel = ReadingListViewModel()
-        let model = ReadingListModel(repository: repository, presentation: viewModel)
-        let view = ReadingListViewController(useCase: model, viewModel: viewModel)
-        
-        view.navigationDelegate = self
-        
-        return view
-    }
-    
+protocol ReadingListNavigation: AnyObject{
+
+	func forwardTo(reading: Reading)
+
+	func forwardToUser()
+
 }
 
-extension ReadingListCoordinator: ReadingListNavigationDelegate {
-    
-    func navigate(to reading: Reading) {
-        let readingCoordinator = ReadingCoordinator(reading: reading)
-        
-        guard let navigable = self.navigable else {
-            return
-        }
-        
-        self.readingCoordinator = readingCoordinator // Retain
-        
-        readingCoordinator.start(navigable: navigable)
-    }
-    
+class ReadingListCoordinator {
+
+	let session: AppSession
+
+	weak var rootNavigationDelegate: RootNavigationDelegate?
+
+	private var readingCoordinator: ReadingCoordinator?
+	private weak var navigable: Navigable?
+
+	init(session: AppSession) {
+		self.session = session
+	}
+
+	func start(navigable: Navigable) {
+		self.navigable = navigable
+
+		let repository = ReadingListRepository { [session] in
+			guard let authorization = session.authorizations[.pocket] else { return nil }
+			return PocketRequest(network: session.network, authorization: authorization)
+		}
+
+		let viewModel = ReadingListViewModel()
+		let model = ReadingListInteractor(repository: repository, presentation: viewModel)
+
+		let view = ReadingListViewController(useCase: model, viewModel: viewModel)
+		view.navigation = self
+
+		navigable.navigateTo(view: view, animated: true)
+	}
+
+}
+
+extension ReadingListCoordinator: ReadingListNavigation {
+
+	func forwardToUser() {
+		rootNavigationDelegate?.forwardToUser()
+	}
+
+	func forwardTo(reading: Reading) {
+		guard let navigable = navigable else {
+			return
+		}
+
+		let readingCoordinator = ReadingCoordinator(session: session, reading: reading)
+		readingCoordinator.start(navigable: navigable)
+
+		self.readingCoordinator = readingCoordinator // Retain
+	}
+
 }

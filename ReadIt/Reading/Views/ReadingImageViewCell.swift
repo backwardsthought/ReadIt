@@ -29,7 +29,7 @@ class ReadingImageViewCell: UICollectionViewCell {
         
         addSubview(imageView)
         
-        addConstraintsForAllEdges(of: imageView)
+        addConstraints(matchingEdgesOf: imageView)
     }
     
     required init?(coder: NSCoder) {
